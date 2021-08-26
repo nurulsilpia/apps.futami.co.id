@@ -26,6 +26,7 @@ Route::resource('test','\App\Http\Controllers\test');
 
 
 Route::resource('downtime','\App\Http\Controllers\downtime\downtimeController');
+Route::resource('varian','\App\Http\Controllers\varianController');
 
 // login
 Route::get('/login', 'otentikasi\OtentikasiController@index' )-> name('login') ;
