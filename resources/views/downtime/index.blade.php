@@ -42,7 +42,6 @@
                                     <td>
                                         {{ \Carbon\Carbon::parse( $item->mulai_downtime )->diffInMinutes( $item->selesai_downtime ) }} Menit
                                         </td>
-                                    
                                 </tr>
                                 @endforeach
                         </table>
