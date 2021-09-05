@@ -46,3 +46,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'otentikasi\OtentikasiController@profile' )-> name('profile') ;
     Route::post('/profile/simpan', 'otentikasi\OtentikasiController@profilesimpan') -> name('profile-user-simpan');
 });
+
+//FillingPerfomance
+Route::resource('FillingPerfomance','\App\Http\Controllers\FillingPerfomanceController');
