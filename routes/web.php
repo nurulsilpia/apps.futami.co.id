@@ -26,8 +26,10 @@ Route::resource('test','\App\Http\Controllers\test');
 
 
 Route::resource('downtime','\App\Http\Controllers\downtime\downtimeController');
+Route::resource('varian','\App\Http\Controllers\varianController');
 
 // login
+Route::get('/coincalc', 'test@coincalc' )-> name('coincalc') ;
 Route::get('/login', 'otentikasi\OtentikasiController@index' )-> name('login') ;
 Route::post('/login', 'otentikasi\OtentikasiController@login') -> name('login');
 Route::get('/logout', 'otentikasi\OtentikasiController@logout') -> name('logout');
