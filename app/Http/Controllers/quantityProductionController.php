@@ -16,7 +16,7 @@ class quantityProductionController extends Controller
     public function index()
     {
         $data_quantityProduction = DB::table('tbl_quantity_production')->get();
-        return view('quantity-production.index',['data_quantityProduction'=> $data_quantityProduction]);
+        return view('QuantityProduction.index',['data_quantityProduction'=> $data_quantityProduction]);
     }
 
     /**
@@ -26,7 +26,7 @@ class quantityProductionController extends Controller
      */
     public function create()
     {
-        return view('quantity-production.create');
+        return view('QuantityProduction.create');
     }
 
     /**
@@ -48,7 +48,7 @@ class quantityProductionController extends Controller
             $request->sample,
             $request->reject_defect_hci
             ]);
-        return redirect()->route('quantity-production.index');
+        return redirect()->route('QuantityProduction.index');
     }
 
     /**
@@ -60,7 +60,7 @@ class quantityProductionController extends Controller
     public function show($id)
     {
         $tampil = DB::table('tbl_quantity_production')->where('id_quantity_production', $id)->get();
-        return view('quantity-production.tampil',['tampil'=> $tampil]);
+        return view('QuantityProduction.tampil',['tampil'=> $tampil]);
     }
 
     /**
@@ -72,7 +72,7 @@ class quantityProductionController extends Controller
     public function edit($id)
     {
         $edit = DB::table('tbl_quantity_production')->where('id_quantity_production',$id)->get();
-        return view('quantity-production.edit',['edit'=> $edit]);
+        return view('QuantityProduction.edit',['edit'=> $edit]);
     }
 
     /**
@@ -92,7 +92,7 @@ class quantityProductionController extends Controller
                 'sample' => $request->sample,
                 'reject_defect_hci' => $request->reject_defect_hci
             ]);
-        return redirect()->route('quantity-production.index');
+        return redirect()->route('QuantityProduction.index');
     }
 
     /**
@@ -104,6 +104,6 @@ class quantityProductionController extends Controller
     public function destroy($id)
     {
         DB::table('tbl_quantity_production')->where('id_quantity_production',$id)->delete();
-        return redirect()->route('quantity-production.index');
+        return redirect()->route('QuantityProduction.index');
     }
 }

@@ -4,7 +4,7 @@
 @section('content')
 
     @foreach ($edit as $no => $data_test)
-        <form action="{{route('quantity-production.update',$data_test->id_quantity_production)}}" method="POST">
+        <form action="{{route('QuantityProduction.update',$data_test->id_quantity_production)}}" method="POST">
             @method('PUT')
             <div class="card shadow-sm">
                 <div class="card-header fs-5 bg-light text-uppercase">

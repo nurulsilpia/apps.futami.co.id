@@ -7,7 +7,7 @@
             <b>Tambah Data</b> 
         </div>
         <div class="card-body">
-            <form action="{{ route('quantity-production.store') }}" method="POST" class="mx-3">
+            <form action="{{ route('QuantityProduction.store') }}" method="POST" class="mx-3">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label fw-bold">ID Product</label>

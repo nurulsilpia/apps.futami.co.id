@@ -42,8 +42,8 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-// quantity-production
-Route::resource('quantity-production','\App\Http\Controllers\quantityProductionController');
+// QuantityProduction
+Route::resource('QuantityProduction','\App\Http\Controllers\quantityProductionController');
 
 //FillingPerfomance
 Route::resource('FillingPerfomance','\App\Http\Controllers\FillingPerfomanceController');

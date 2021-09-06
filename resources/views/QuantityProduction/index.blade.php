@@ -4,7 +4,7 @@
 @section('content')
     <div class="card mt-3 p-4 shadow-sm">
         <div class="table-responsive">
-            <a href="{{ route('quantity-production.create') }}" class="btn btn-success">Tambah Data</a>
+            <a href="{{ route('QuantityProduction.create') }}" class="btn btn-success">Tambah Data</a>
             <table align="center" border="1" class="mt-4 table table-striped table-hover bg-white text-center" id="tableAll">
                 <thead>
                 <tr>
@@ -28,13 +28,13 @@
                             <td>{{ $data_quantityProduction->reject_defect_hci }}</td>
                             <td>-</td>
                             <td>
-                                <a class="btn btn-dark" href="{{ route('quantity-production.show',$data_quantityProduction->id_quantity_production) }}">Show</a> 
+                                <a class="btn btn-dark" href="{{ route('QuantityProduction.show',$data_quantityProduction->id_quantity_production) }}">Show</a> 
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="{{route('quantity-production.edit',$data_quantityProduction->id_quantity_production)}}">Edit</a> 
+                                <a class="btn btn-primary" href="{{route('QuantityProduction.edit',$data_quantityProduction->id_quantity_production)}}">Edit</a> 
                             </td>
                             <td>
-                                <form action="{{ route('quantity-production.destroy',$data_quantityProduction->id_quantity_production) }}" method="POST">
+                                <form action="{{ route('QuantityProduction.destroy',$data_quantityProduction->id_quantity_production) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger" type="submit" onclick="return confirm('Hapus Data?')">Delete</button>
