@@ -24,7 +24,7 @@
                   <li><a class="nav-link" href="#">Variant</a></li>
                   <li><a class="nav-link" href="#">Downtime</a></li>
                   <li><a class="nav-link" href="#">Preparation</a></li>
-                  <li><a class="nav-link" href="#">Quantity Production</a></li>
+                  <li><a class="nav-link" href="{{ url('quantity-production') }}">Quantity Production</a></li>
                   <li><a class="nav-link" href="#">Filling Performance</a></li>
                 </ul>
               </li>

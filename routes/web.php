@@ -17,14 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::resource('test','\App\Http\Controllers\test');
 //          Nama route, nama controller
 
-
-
-
-
-
-
-
-
 Route::resource('downtime','\App\Http\Controllers\downtime\downtimeController');
 
 // login
@@ -46,3 +38,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'otentikasi\OtentikasiController@profile' )-> name('profile') ;
     Route::post('/profile/simpan', 'otentikasi\OtentikasiController@profilesimpan') -> name('profile-user-simpan');
 });
+
+// quantity-production
+Route::resource('quantity-production','\App\Http\Controllers\quantityProductionController');
