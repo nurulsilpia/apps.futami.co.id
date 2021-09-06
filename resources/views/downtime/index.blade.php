@@ -24,7 +24,7 @@
                                 <th>Total Waktu</th>
                                 
                             </tr>
-                            @foreach ($data_downtime as $no =>  $item)
+                            @foreach ($data_downtime as $no =>  $item ) 
                             
                                 <tr>
                                     <td>{{ $no+1}}</td>
