@@ -20,13 +20,8 @@
                   <li><a class="nav-link" href="#">Variant</a></li>
                   <li><a class="nav-link" href="#">Downtime</a></li>
                   <li><a class="nav-link" href="#">Preparation</a></li>
-<<<<<<< HEAD
                   <li><a class="nav-link" href="{{ url('quantity-production') }}">Quantity Production</a></li>
-                  <li><a class="nav-link" href="#">Filling Performance</a></li>
-=======
-                  <li><a class="nav-link" href="#">Quantity Production</a></li>
                   <li><a class="nav-link" href="/FillingPerfomance">Filling Performance</a></li>
->>>>>>> 6259b3593cd25ef985cc7e14f5d8b399fb2d056b
                 </ul>
               </li>
               <li class="menu-header"></li>
