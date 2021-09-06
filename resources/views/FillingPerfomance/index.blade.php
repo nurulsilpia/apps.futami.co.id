@@ -5,7 +5,7 @@
 <div class="card mt-3 p-4 shadow-sm">
     <div class="table-responsive">
         <a href="{{route('FillingPerfomance.create')}}" class="btn btn-success">Tambah Data</a><br>
-        <table align="center" border="1" class="mt-4 table table-striped table-hover bg-white text-center" id="tableAll">
+        <table align="center" border="1" class="mt-4 table table-bordered table-md table-striped table-hover bg-white text-center" id="tableAll">
     <thead>
         <tr>
             <th>no</th>
@@ -27,7 +27,9 @@
                     <td>{{$data_index->no_batch}}</td>
                     <td>{{$data_index->start_filling}}</td>
                     <td>{{$data_index->stop_filling}}</td>
-                    <td>-</td>
+                    <td>{{ \Carbon\Carbon::parse($data_index->start_filling)->diffinMinutes($data_index->stop_filling) }}
+
+                    </td>
                     <td>{{$data_index->counter_filling}}</td>
                     <td>-</td>
                     <td>
