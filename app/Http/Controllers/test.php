@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 //tambahkan class untuk koneksi ke database
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class test extends Controller
 {
@@ -13,6 +14,10 @@ class test extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function coincalc(){
+        return Http::get('https://api.rekeningku.com/v2/price/4')->body();
+    }
+
     public function index()
     {
         $data_test = DB::table('tbl_test')->get();

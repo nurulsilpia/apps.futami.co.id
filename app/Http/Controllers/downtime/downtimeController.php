@@ -33,7 +33,7 @@ class downtimeController extends Controller
      */
     public function create()
     {
-        //
+        return view('downtime.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class downtimeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->back()->withErrors($validator)->withInput();
     }
 
     /**

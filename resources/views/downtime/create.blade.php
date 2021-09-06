@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
-                    <form action="{{ route('downtime.create') }}" method="POST">
+                    <form action="{{ route('downtime.store') }}" method="POST">
                         @csrf
                         <div class="card-body">
                             <div class="row">

@@ -13,8 +13,8 @@
                 <div class="card">
                     <div class="card-body">
                     <div class="table-responsive">
-                        <a href="" class="btn btn-success">Tambah Data</a><br><br>
-                        <table bor class="table table-bordered table-md ">
+                    <a href="{{route('downtime.create')}}" class="btn btn-success">Tambah Data</a><br><br>
+                        <table class="table table-bordered table-md ">
                             <tr>
                                 <th width="50px">NO.</th>
                                 <th>Produksi</th>
