@@ -41,10 +41,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/profile/simpan', 'otentikasi\OtentikasiController@profilesimpan') -> name('profile-user-simpan');
 });
 
+//QuantityRelease
+Route::resource('QuantityRelease','\App\Http\Controllers\QuantityReleaseQcController');
+
+//TimeReparation
+Route::resource('TimeReparation','\App\Http\Controllers\TimeReparationContoller');
 
 // QuantityProduction
 Route::resource('QuantityProduction','\App\Http\Controllers\quantityProductionController');
 
 //FillingPerfomance
 Route::resource('FillingPerfomance','\App\Http\Controllers\FillingPerfomanceController');
-

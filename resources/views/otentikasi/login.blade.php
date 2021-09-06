@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Halaman Login </title>
-  
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}"  crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('assets/css/all.css') }}"  crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('assets/css/all.css') }}" crossorigin="anonymous">
   
     {{-- CSS Libraries --}}
     @yield('page-styles')
