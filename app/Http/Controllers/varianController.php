@@ -3,25 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//tambahkan class untuk koneksi ke database
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
 
-class test extends Controller
+
+class varianController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function coincalc(){
-        return Http::get('https://api.rekeningku.com/v2/price/4')->body();
-    }
-
     public function index()
     {
-        $data_test = DB::table('tbl_test')->get();
-        return view ('test.home',['data_test'=> $data_test]);
+        $data_varian = DB::table('tbl_varian')->get();
+        return view('varian.index',['data_varian'=>$data_varian]);
     }
 
     /**
@@ -31,7 +26,7 @@ class test extends Controller
      */
     public function create()
     {
-        return view('test.create');
+        //
     }
 
     /**
@@ -42,15 +37,7 @@ class test extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        DB::insert('insert into tbl_test (
-            name,
-            alamat) 
-            values (?,?)', [
-            $request->name,
-            $request->alamat
-            ]);
-        return redirect()->route('test.index');
+        //
     }
 
     /**
@@ -61,9 +48,7 @@ class test extends Controller
      */
     public function show($id)
     {
-        $tampil = DB::table('tbl_test')->where('id',$id)->get();
-        // dd($tampil);
-        return view('test.tampil',['tampil'=> $tampil]);
+        //
     }
 
     /**
@@ -74,9 +59,7 @@ class test extends Controller
      */
     public function edit($id)
     {
-        $edit = DB::table('tbl_test')->where('id',$id)->get();
-        // dd($edit);
-        return view('test.edit',['edit'=> $edit]);
+        //
     }
 
     /**
@@ -88,14 +71,7 @@ class test extends Controller
      */
     public function update(Request $request, $id)
     {
-       // dd($request);
-        DB::table('tbl_test')
-            ->where('id', $id) 
-            ->update([
-                'name' => $request->name,
-                'alamat' => $request->alamat
-            ]);
-        return redirect()->route('test.index');
+        //
     }
 
     /**
@@ -106,7 +82,6 @@ class test extends Controller
      */
     public function destroy($id)
     {
-        DB::table('tbl_test')->where('id',$id)->delete();
-        return redirect()->route('test.index');
+        //
     }
 }

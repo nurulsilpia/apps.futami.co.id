@@ -13,18 +13,18 @@
                 <div class="card">
                     <div class="card-body">
                     <div class="table-responsive">
-                        <a href="" class="btn btn-success">Tambah Data</a><br><br>
-                        <table bor class="table table-bordered table-md ">
+                    <a href="{{route('downtime.create')}}" class="btn btn-success">Tambah Data</a><br><br>
+                        <table class="table table-bordered table-md ">
                             <tr>
                                 <th width="50px">NO.</th>
                                 <th>Produksi</th>
                                 <th>Jenis Downtime</th>
-                                <th >Unit Downtime</th>
+                                <th>Unit Downtime</th>
                                 <th>Root Cause</th>
-                                <th >Total Waktu</th>
+                                <th>Total Waktu</th>
                                 
                             </tr>
-                            @foreach ($data_downtime as $no =>  $item)
+                            @foreach ($data_downtime as $no =>  $item ) 
                             
                                 <tr>
                                     <td>{{ $no+1}}</td>
@@ -42,7 +42,6 @@
                                     <td>
                                         {{ \Carbon\Carbon::parse( $item->mulai_downtime )->diffInMinutes( $item->selesai_downtime ) }} Menit
                                     </td>
-                                    
                                 </tr>
                                 @endforeach
                         </table>
