@@ -5,7 +5,7 @@
     <div class="card mt-3 p-4 shadow-sm">
         <div class="table-responsive">
             <a href="{{ route('QuantityProduction.create') }}" class="btn btn-success">Tambah Data</a>
-            <table align="center" border="1" class="mt-4 table table-striped table-hover bg-white text-center" id="tableAll">
+            <table class="mt-4 table table-bordered table-md table-hover bg-white text-center">
                 <thead>
                 <tr>
                     <th>No</th>
@@ -28,10 +28,10 @@
                             <td>{{ $data_quantityProduction->reject_defect_hci }}</td>
                             <td>-</td>
                             <td>
-                                <a class="btn btn-dark" href="{{ route('QuantityProduction.show',$data_quantityProduction->id_quantity_production) }}">Show</a> 
+                                <a class="btn btn-primary" href="{{ route('QuantityProduction.show',$data_quantityProduction->id_quantity_production) }}">Show</a> 
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="{{route('QuantityProduction.edit',$data_quantityProduction->id_quantity_production)}}">Edit</a> 
+                                <a class="btn btn-warning" href="{{route('QuantityProduction.edit',$data_quantityProduction->id_quantity_production)}}">Edit</a> 
                             </td>
                             <td>
                                 <form action="{{ route('QuantityProduction.destroy',$data_quantityProduction->id_quantity_production) }}" method="POST">
