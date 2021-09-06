@@ -23,7 +23,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="#">Variant</a></li>
                   <li><a class="nav-link" href="#">Downtime</a></li>
-                  <li><a class="nav-link" href="#">Preparation</a></li>
+                  <li><a class="nav-link" href="{{ url('TimeReparation') }}">Preparation</a></li>
                   <li><a class="nav-link" href="#">Quantity Production</a></li>
                   <li><a class="nav-link" href="#">Filling Performance</a></li>
                 </ul>
@@ -39,7 +39,7 @@
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="far fa-file-alt"></i> <span>QC</span></a>
                 <ul class="dropdown-menu">
-                   <li><a class="nav-link" href="#">Quantity Release QC</a></li>
+                   <li><a class="nav-link" href="{{ url('QuantityRelease') }}">Quantity Release QC</a></li>
                 </ul>
               </li>
               <li class="menu-header"></li>

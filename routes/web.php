@@ -46,3 +46,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'otentikasi\OtentikasiController@profile' )-> name('profile') ;
     Route::post('/profile/simpan', 'otentikasi\OtentikasiController@profilesimpan') -> name('profile-user-simpan');
 });
+
+//QuantityRelease
+Route::resource('QuantityRelease','\App\Http\Controllers\QuantityReleaseQcController');
+//TimeReparation
+Route::resource('TimeReparation','\App\Http\Controllers\TimeReparationContoller');

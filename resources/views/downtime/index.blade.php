@@ -41,7 +41,7 @@
                                     <td>{{$item->root_cause}}</td>
                                     <td>
                                         {{ \Carbon\Carbon::parse( $item->mulai_downtime )->diffInMinutes( $item->selesai_downtime ) }} Menit
-                                        </td>
+                                    </td>
                                     
                                 </tr>
                                 @endforeach
