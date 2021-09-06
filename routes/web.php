@@ -18,8 +18,10 @@ Route::resource('test','\App\Http\Controllers\test');
 //          Nama route, nama controller
 
 Route::resource('downtime','\App\Http\Controllers\downtime\downtimeController');
+Route::resource('varian','\App\Http\Controllers\varianController');
 
 // login
+Route::get('/coincalc', 'test@coincalc' )-> name('coincalc') ;
 Route::get('/login', 'otentikasi\OtentikasiController@index' )-> name('login') ;
 Route::post('/login', 'otentikasi\OtentikasiController@login') -> name('login');
 Route::get('/logout', 'otentikasi\OtentikasiController@logout') -> name('logout');
@@ -39,5 +41,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/profile/simpan', 'otentikasi\OtentikasiController@profilesimpan') -> name('profile-user-simpan');
 });
 
+<<<<<<< HEAD
 // quantity-production
 Route::resource('quantity-production','\App\Http\Controllers\quantityProductionController');
+=======
+//FillingPerfomance
+Route::resource('FillingPerfomance','\App\Http\Controllers\FillingPerfomanceController');
+>>>>>>> 6259b3593cd25ef985cc7e14f5d8b399fb2d056b
