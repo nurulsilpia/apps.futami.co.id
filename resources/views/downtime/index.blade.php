@@ -19,9 +19,9 @@
                                 <th width="50px">NO.</th>
                                 <th>Produksi</th>
                                 <th>Jenis Downtime</th>
-                                <th >Unit Downtime</th>
+                                <th>Unit Downtime</th>
                                 <th>Root Cause</th>
-                                <th >Total Waktu</th>
+                                <th>Total Waktu</th>
                                 
                             </tr>
                             @foreach ($data_downtime as $no =>  $item)
@@ -41,7 +41,7 @@
                                     <td>{{$item->root_cause}}</td>
                                     <td>
                                         {{ \Carbon\Carbon::parse( $item->mulai_downtime )->diffInMinutes( $item->selesai_downtime ) }} Menit
-                                        </td>
+                                    </td>
                                 </tr>
                                 @endforeach
                         </table>
