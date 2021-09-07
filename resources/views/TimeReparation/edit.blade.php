@@ -7,7 +7,7 @@
         <form action="{{route('TimeReparation.update',$data_table->id_time_reparation)}}" method="POST">
             @method('PUT')
             <div class="card shadow-sm">
-                <div class="card-header fs-5 bg-light">
+                <div class="card-header fs-5 bg-light text-uppercase">
                     <b>Edit Data</b> 
                 </div>
                 <div class="card-body">
