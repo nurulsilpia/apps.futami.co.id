@@ -14,6 +14,7 @@
                     <th>Sample</th>
                     <th>Reject + Defect HCI</th>
                     <th>Production Finish Good</th>
+                    <th>Total</th>
                     <th colspan="3">Aksi</th>
                 </tr>
                 </thead>
@@ -26,7 +27,8 @@
                             <td>{{ $data_quantityProduction->reject_defect }}</td>
                             <td>{{ $data_quantityProduction->sample }}</td>
                             <td>{{ $data_quantityProduction->reject_defect_hci }}</td>
-                            <td>-</td>
+                            <td>0</td>
+                            <td></td>
                             <td>
                                 <a class="btn btn-primary" href="{{ route('QuantityProduction.show',$data_quantityProduction->id_quantity_production) }}">Show</a> 
                             </td>
