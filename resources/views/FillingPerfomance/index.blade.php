@@ -5,11 +5,12 @@
 <div class="card mt-3 p-4 shadow-sm">
     <div class="table-responsive">
         <a href="{{route('FillingPerfomance.create')}}" class="btn btn-success">Tambah Data</a><br>
-        <table align="center" border="1" class="mt-4 table table-bordered table-md table-striped table-hover bg-white text-center" id="tableAll">
+        <table class="mt-4 table table-bordered table-md table-hover bg-white text-center">
     <thead>
         <tr>
             <th>no</th>
-            <th>no produk</th>
+            <th>id filling perfomance</th>
+            <th>id produk</th>
             <th>no batch</th>
             <th>start filling</th>
             <th>stop filling</th>
@@ -22,6 +23,7 @@
             <tbody>
                 @foreach ($data_index as $no => $data_index)
                 <tr>
+                    <th scope="row">{{ $no + 1 }}</th>
                     <td>{{$data_index->id_filling_perfomance}}</td>
                     <td>{{$data_index->id_product}}</td>
                     <td>{{$data_index->no_batch}}</td>
