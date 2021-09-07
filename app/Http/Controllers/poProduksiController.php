@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\downtime;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
-class downtimeController extends Controller
+class poProduksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,17 +15,12 @@ class downtimeController extends Controller
     public function index()
     {
         $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
-        $data_varian = DB::table('tbl_varian')->get();
-        $data_downtime = DB::table('tbl_downtime')->orderBy('selesai_downtime','Desc')->get();
-        $data_jenis_downtime = DB::table('tbl_jenis_downtime')->get();
-        $data_unit_downtime = DB::table('tbl_unit_downtime')->get();
-        return view ('downtime.index',[
-            'data_downtime'=> $data_downtime,
-            'data_jenis_downtime'=> $data_jenis_downtime,
-            'data_unit_downtime'=> $data_unit_downtime,
+        $varian = DB::table('tbl_varian')->get();
+
+        return view('poproduksi.index',[
             'poproduksi'=>$poproduksi,
-            'data_varian'=>$data_varian,
-            ]);
+            "varian"=>$varian
+        ]);
     }
 
     /**
@@ -37,7 +30,10 @@ class downtimeController extends Controller
      */
     public function create()
     {
-        return view('downtime.create');
+        $varian = DB::table('tbl_varian')->get();
+        return view('poproduksi.create',[
+                "varian"=>$varian
+            ]);
     }
 
     /**
@@ -48,7 +44,19 @@ class downtimeController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->back()->withErrors($validator)->withInput();
+        DB::insert('insert into tbl_po_produksi (
+            id_varian, 
+            jumlah_po, 
+            status_po,
+            note
+            )
+            values (?,?,?,?)',[
+                $request->id_varian,
+                $request->jumlah_po,
+                "open",
+                $request->note,
+            ]);
+            return redirect()->route('poproduksi.index');
     }
 
     /**
@@ -59,7 +67,12 @@ class downtimeController extends Controller
      */
     public function show($id)
     {
-        //
+        $varian = DB::table('tbl_varian')->get();
+        $poproduksi=DB::table('tbl_po_produksi')->where('id',$id)->get();
+        return view('poproduksi.show',[
+            'poproduksi'=>$poproduksi,
+            "varian"=>$varian
+        ]);
     }
 
     /**
@@ -82,7 +95,15 @@ class downtimeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('tbl_po_produksi')
+            ->where('id', $id) 
+            ->update([
+                'id_varian' => $request->id_varian,
+                'status_po' => $request->status_po,
+                'note' => $request->note,
+                'jumlah_po' => $request->jumlah_po
+            ]);
+        return redirect(route('poproduksi.index'));
     }
 
     /**
@@ -93,6 +114,8 @@ class downtimeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tbl_po_produksi')->where('id','=', $id)->delete();
+        
+        return redirect()->route('poproduksi.index') -> with('deleted','berhasil menghapus');
     }
 }

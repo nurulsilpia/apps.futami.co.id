@@ -14,13 +14,13 @@
                     <div class="card-body">
                     <div class="table-responsive">
                         <a href="" class="btn btn-success">Tambah Data</a><br><br>
-                        <table bor class="table table-bordered table-md ">
-                            <tr>
-                                <th width="50px">NO.</th>
+                        <table bor class="table table-bordered table-sm table-hover  text-center">
+                            <tr class="bg-info text-white">
+                                <th width="10px">NO.</th>
                                 <th>varian</th>
                                 <th>Kode</th>
                                 <th>Ukuran</th>
-                                
+                                <th width="150px">Action</th>
                             </tr>
                             @foreach ($data_varian as $no =>  $item)
                             
@@ -29,6 +29,11 @@
                                     <td>{{ $item->nama_variant}}</td>
                                     <td>{{ $item->kode_variant}}</td>
                                     <td>{{ $item->ukuran}}</td>
+                                    <td> <form action="{{-- route('ketentuanklaim.destroy',$item->id) --}}" method="POST">
+                                        <a class="btn btn-primary" href="{{-- route('ketentuanklaim.edit',$item->id) --}}">Edit</a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button></td>
                                 </tr>
                                 @endforeach
                         </table>
