@@ -48,7 +48,7 @@ Route::resource('QuantityRelease','\App\Http\Controllers\QuantityReleaseQcContro
 Route::resource('TimeReparation','\App\Http\Controllers\TimeReparationContoller');
 
 // QuantityProduction
-Route::resource('QuantityProduction','\App\Http\Controllers\quantityProductionController');
+Route::resource('QuantityProduction','\App\Http\Controllers\QuantityProductionController');
 
 //FillingPerfomance
 Route::resource('FillingPerfomance','\App\Http\Controllers\FillingPerfomanceController');
