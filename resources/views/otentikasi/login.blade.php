@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Halaman Login </title>
-  
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" integrity="ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('assets/css/all.css') }}" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('assets/css/all.css') }}" crossorigin="anonymous">
   
     {{-- CSS Libraries --}}
     @yield('page-styles')
@@ -80,9 +80,9 @@
 
  
   <!-- General JS Scripts -->
-  <script src="{{ asset('assets/js/jquery-3.3.1.min.js')}}"  crossorigin="anonymous"></script>
-  <script src="{{ asset('assets/js/popper.min.js')}}"  crossorigin="anonymous"></script>
-  <script src="{{ asset('assets/js/bootstrap.min.js')}}"  crossorigin="anonymous"></script>
+  <script src="{{ asset('assets/js/jquery-3.3.1.min.js')}}" crossorigin="anonymous"></script>
+  <script src="{{ asset('assets/js/popper.min.js')}}" crossorigin="anonymous"></script>
+  <script src="{{ asset('assets/js/bootstrap.min.js')}}" crossorigin="anonymous"></script>
   <script src="{{ asset('assets/js/jquery.nicescroll.min.js')}}"></script>
   <script src="{{ asset('assets/js/moment.min.js')}}"></script>
   <script src="{{ asset('assets/js/stisla.js')}}"></script>

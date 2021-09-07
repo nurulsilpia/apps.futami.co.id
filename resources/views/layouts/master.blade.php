@@ -39,9 +39,9 @@
   </div>
 
   <!-- General JS Scripts -->
-  <script src="{{ asset('assets/js/jquery-3.3.1.min.js')}}"  crossorigin="anonymous"></script>
-  <script src="{{ asset('assets/js/popper.min.js')}}"  crossorigin="anonymous"></script>
-  <script src="{{ asset('assets/js/bootstrap.min.js')}}"  crossorigin="anonymous"></script>
+  <script src="{{ asset('assets/js/jquery-3.3.1.min.js')}}" crossorigin="anonymous"></script>
+  <script src="{{ asset('assets/js/popper.min.js')}}" crossorigin="anonymous"></script>
+  <script src="{{ asset('assets/js/bootstrap.min.js')}}" crossorigin="anonymous"></script>
   <script src="{{ asset('assets/js/jquery.nicescroll.min.js')}}"></script>
   <script src="{{ asset('assets/js/moment.min.js')}}"></script>
   <script src="{{ asset('assets/js/stisla.js')}}"></script>
