@@ -4,7 +4,7 @@
 @section('content')
     <div class="card mt-3 p-4 shadow-sm">
         <div class="table-responsive">
-        <a href="{{ url('/QuantityProduction') }}" class="btn btn-success mb-3">Kembali</a>
+        <a href="{{ url('/FillingPerfomance') }}" class="btn btn-success mb-3">Kembali</a>
             <table align="center" border="1" class="mt-4 table table-striped table-hover bg-white text-center" id="tableAll">
                 <thead>
                 <tr>
