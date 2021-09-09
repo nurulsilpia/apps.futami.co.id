@@ -16,11 +16,33 @@ class FillingPerfomanceController extends Controller
      */
     public function index()
     {
-        $data_index = DB::table('tbl_filling_perfomance')->get();
-        return view('FillingPerfomance.index',['data_index'=>$data_index]);
-        // $data_index = FillingPerfomance::all(); 
-        //artinya SELECT * FROM tbl_test. ngambil tbl_test dari model Pegawai
-        // return view('FillingPerfomance.index', compact('data_index'));
+        $data_index = DB::select(
+          'SELECT 
+            id_product,
+            SUM(counter_filling) counter_filling, 
+            COUNT(counter_filling) total_batch
+           FROM 
+            tbl_filling_perfomance
+           GROUP BY
+            id_product'
+        );
+
+        // dd($data_index);
+
+        $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
+        $varian = DB::table('tbl_varian')->get();
+          
+        return view('FillingPerfomance.index',[
+            'data_index'=>$data_index,
+            'poproduksi'=>$poproduksi,
+            "varian"=>$varian
+            ]);
+    }
+
+    public function detail($id)
+    {
+        $data_index = DB::table('tbl_filling_perfomance')->where('id_product',$id)->get();
+        return view('FillingPerfomance.detail',['data_index'=>$data_index]);
     }
 
     /**
@@ -31,10 +53,6 @@ class FillingPerfomanceController extends Controller
     public function create()
     {
         return view('FillingPerfomance.create-data');
-        // $model = new FillingPerfomance;
-        // return view('FillingPerfomance.create-data', compact(
-        //     'model'
-        // ));
     }
 
     /**

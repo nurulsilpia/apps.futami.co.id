@@ -2,11 +2,7 @@
 @section('title', 'PO Produksi')
 
 @section('content')
-    <section class="section">
-        <div class="section-header">
-            <h1>Data PO Produksi</h1>
-        </div>
-    </section>
+
     <div class="section-body">
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
@@ -16,10 +12,11 @@
                     <a href="{{route('poproduksi.create')}}" class="btn btn-success">Tambah Data</a><br><br>
                         <table  class="table table-bordered table-sm table-hover  text-center">
                             <tr  class="bg-info text-white">
-                                <th width="50px">NO.</th>
+                                <th width="20px">NO.</th>
                                 <th width="180px">Varian</th>
-                                <th>Ukuran</th>
+                                <th width="50px">Ukuran</th>
                                 <th width="120px">Jumlah PO</th>
+                                <th width="70px">Standar BPH</th>
                                 <th>Status</th>
                                 <th width="100px">Tgl Dibuat</th>
                                 <th>Catatan</th>
@@ -34,6 +31,7 @@
                                         <td>{{$variannya->ukuran}}</td>
                                     @endforeach
                                     <td>{{ number_format($item->jumlah_po,0,'','.')}} Botol</td>
+                                    <td>{{ number_format($item->standar_bph,0,'','.')}} Botol</td>
                                     <td>{{ $item->status_po}}</td>
                                     <td>{{ $item->tanggal_dibuat}}</td>
                                     <td>{{ $item->note}}</td>
@@ -41,7 +39,7 @@
                                         <a class="btn btn-primary" href="{{route('poproduksi.show',$item->id)}}">Show</a>
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus Data?')">Delete</button>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -19,7 +19,7 @@ class poProduksiController extends Controller
 
         return view('poproduksi.index',[
             'poproduksi'=>$poproduksi,
-            "varian"=>$varian
+            'varian'=>$varian
         ]);
     }
 
@@ -48,13 +48,19 @@ class poProduksiController extends Controller
             id_varian, 
             jumlah_po, 
             status_po,
-            note
+            standar_bph,
+            note,
+            mulai_produksi,
+            selesai_produksi
             )
-            values (?,?,?,?)',[
+            values (?,?,?,?,?)',[
                 $request->id_varian,
                 $request->jumlah_po,
-                "open",
+                $request->status,
+                $request->standar_bph,
                 $request->note,
+                $request->mulai_produksi,
+                $request->selesai_produksi,
             ]);
             return redirect()->route('poproduksi.index');
     }

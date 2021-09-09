@@ -22,7 +22,7 @@ class OtentikasiController extends Controller
             $name = Auth::user()->name;
             $id_user = Auth::user()->id;
             session(['berhasil_login'=> true, 'namanya'=>$name, 'id_user'=>$id_user]);
-            return redirect('/home');
+            return redirect()->route('home');;
         }
         return redirect('/login')->with('message',"Username atau Password salah!!!");
     }
@@ -69,6 +69,6 @@ class OtentikasiController extends Controller
     public function logout(Request $request){
         $request->session()->flush();
         Auth::logout();
-        return redirect('/home');
+        return redirect()->route('home');
     }
 }

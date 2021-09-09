@@ -22,7 +22,7 @@ Route::resource('varian','\App\Http\Controllers\varianController');
 Route::resource('poproduksi','\App\Http\Controllers\poProduksiController');
 
 // login
-Route::get('/coincalc', 'test@coincalc' )-> name('coincalc') ;
+// Route::get('/coincalc', 'test@coincalc' )-> name('coincalc') ;
 Route::get('/login', 'otentikasi\OtentikasiController@index' )-> name('login') ;
 Route::post('/login', 'otentikasi\OtentikasiController@login') -> name('login');
 Route::get('/logout', 'otentikasi\OtentikasiController@logout') -> name('logout');
@@ -30,10 +30,8 @@ Route::get('/logout', 'otentikasi\OtentikasiController@logout') -> name('logout'
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('/home');
-    });
-    Route::get('/home', function () {
-        return view('/home');
-    });
+    })->name('home');
+    
     // tambah user
     Route::get('/tambahuser', 'otentikasi\OtentikasiController@tambah' )-> name('tambah-user') ;
     Route::post('/tambahuser/simpan', 'otentikasi\OtentikasiController@simpan') -> name('tambah-user-simpan');
@@ -49,7 +47,9 @@ Route::resource('QuantityRelease','\App\Http\Controllers\QuantityReleaseQcContro
 Route::resource('TimeReparation','\App\Http\Controllers\TimeReparationContoller');
 
 // QuantityProduction
+Route::get('QuantityProduction/detail/{id}','\App\Http\Controllers\QuantityProductionController@detail')->name('quantity_production_detail');
 Route::resource('QuantityProduction','\App\Http\Controllers\QuantityProductionController');
 
 //FillingPerfomance
+Route::get('FillingPerfomance/detail/{id}','\App\Http\Controllers\FillingPerfomanceController@detail')->name('filling_detail');
 Route::resource('FillingPerfomance','\App\Http\Controllers\FillingPerfomanceController');

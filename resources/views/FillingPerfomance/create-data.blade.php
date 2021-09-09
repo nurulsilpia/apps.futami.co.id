@@ -1,11 +1,8 @@
 @extends('layouts.master')
-@section('title','Filling Perfomance')
+@section('title','Tambah data Filling Perfomance')
 
 @section('content')
-    <div class="card shadow-sm">
-        <div class="card-header fs-5 bg-light">
-            <b>Tambah Data</b> 
-        </div>
+
         <div class="card-body">
             <form action="{{route('FillingPerfomance.store')}}" method="POST" class="mx-3">
                 @csrf
@@ -29,7 +26,7 @@
                     <label class="form-label fw-bold">Counter Filling</label>
                     <input type="number" name="counter_filling" class="form-control" placeholder="Masukan Counter Filling" required>
                 </div>
-                <button type="submit" class="btn btn-primary" onclick="return confirm('Simpan Data?')">Simpan Data</button>
+                <button type="submit" class="btn btn-primary" >Simpan Data</button>
             </form>
         </div>
     </div>

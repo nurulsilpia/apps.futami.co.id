@@ -42,9 +42,9 @@
                                         <label>Status Produksi</label>
                                         <select class="form-control"  name="status_po" >
                                             <option value="{{$item->status_po}}">{{$item->status_po}}</option>
-                                            <option value="">----Silahkan ganti untuk mengganti varian----</option>
-                                            <option value="open">Open</option>
-                                            <option value="close">Close</option>
+                                            <option value="">----Silahkan ganti untuk mengganti status----</option>
+                                            <option value="PRODUKSI">PRODUKSI</option>
+                                            <option value="TRIAL">TRIAL</option>
                                         </select>
                                     </div>
                                 </div>

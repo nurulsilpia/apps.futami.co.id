@@ -3,9 +3,7 @@
 
 @section('content')
     <div class="card shadow-sm">
-        <div class="card-header fs-5 bg-light text-uppercase">
-            <b>Tambah Data</b> 
-        </div>
+        
         <div class="card-body">
             <form action="{{ route('QuantityRelease.store') }}" method="POST" class="mx-3">
                 @csrf
