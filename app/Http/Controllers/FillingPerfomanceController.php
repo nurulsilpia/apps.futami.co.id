@@ -18,9 +18,6 @@ class FillingPerfomanceController extends Controller
     {
         $data_index = DB::table('tbl_filling_perfomance')->get();
         return view('FillingPerfomance.index',['data_index'=>$data_index]);
-        // $data_index = FillingPerfomance::all(); 
-        //artinya SELECT * FROM tbl_test. ngambil tbl_test dari model Pegawai
-        // return view('FillingPerfomance.index', compact('data_index'));
     }
 
     /**
@@ -31,10 +28,6 @@ class FillingPerfomanceController extends Controller
     public function create()
     {
         return view('FillingPerfomance.create-data');
-        // $model = new FillingPerfomance;
-        // return view('FillingPerfomance.create-data', compact(
-        //     'model'
-        // ));
     }
 
     /**
@@ -55,17 +48,6 @@ class FillingPerfomanceController extends Controller
                 $request->counter_filling
             ]);
             return redirect()->route('FillingPerfomance.index');
-
-        // $model = new FillingPerfomance;
-        // $model->id_product = $request->id_product;
-        // $model->no_batch = $request->no_batch;
-        // $model->start_filling = $request->start_filling;
-        // $model->stop_filling = $request->stop_filling;
-        // $model->counter_filling = $request->counter_filling;
-        // $model->save();
-
-        // return redirect('index');
-
     }
 
     /**
