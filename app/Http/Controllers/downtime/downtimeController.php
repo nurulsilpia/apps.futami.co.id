@@ -16,13 +16,17 @@ class downtimeController extends Controller
      */
     public function index()
     {
-        $data_downtime = DB::table('tbl_downtime')->get();
+        $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
+        $data_varian = DB::table('tbl_varian')->get();
+        $data_downtime = DB::table('tbl_downtime')->orderBy('selesai_downtime','Desc')->get();
         $data_jenis_downtime = DB::table('tbl_jenis_downtime')->get();
         $data_unit_downtime = DB::table('tbl_unit_downtime')->get();
         return view ('downtime.index',[
             'data_downtime'=> $data_downtime,
             'data_jenis_downtime'=> $data_jenis_downtime,
-            'data_unit_downtime'=> $data_unit_downtime
+            'data_unit_downtime'=> $data_unit_downtime,
+            'poproduksi'=>$poproduksi,
+            'data_varian'=>$data_varian,
             ]);
     }
 

@@ -2,7 +2,6 @@
 @section('title','Quantity Production')
 
 @section('content')
-    
     <div class="card mt-3 p-4 shadow-sm">
         <div class="table-responsive">
             <a href="{{ route('QuantityProduction.create') }}" class="btn btn-success">Tambah Data</a>
@@ -16,7 +15,7 @@
                     <th>Reject + Defect HCI</th>
                     <th>Production Finish Good</th>
                     <th>Total</th>
-                    <th colspan="2">Action</th>
+                    <th colspan="2">Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -24,18 +23,12 @@
                     @foreach($data_quantityProduction as $no => $data_quantityProduction)
                         <tr>
                             <th scope="row">{{ $no + 1 }}</th>
-                            <td>
-                                @foreach ($poproduksi->where('id',$data_quantityProduction->id_product) as $poproduksinya)
-                                    @foreach ($varian->where('id',$poproduksinya->id_varian) as $item)
-                                        <a href="{{route('poproduksi.show',$data_quantityProduction->id_product)}}"> {{$item->kode_variant }} {{$item->ukuran}}</a>
-                                    @endforeach    
-                                @endforeach</td>
+                            <td>{{ $data_quantityProduction->id_product }}</td>
                             <td>{{ $data_quantityProduction->reject_defect }}</td>
                             <td>{{ $data_quantityProduction->sample }}</td>
                             <td>{{ $data_quantityProduction->reject_defect_hci }}</td>
-                            <td>0</td>
+                            <td>{{ $data_quantityProduction->production_finish_good }}</td>
                             <td></td>
-                            
                             <td>
                                 <a class="btn btn-warning" href="{{route('QuantityProduction.edit',$data_quantityProduction->id_quantity_production)}}">Edit</a> 
                             </td>

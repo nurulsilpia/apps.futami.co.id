@@ -15,9 +15,23 @@ class quantityProductionController extends Controller
      */
     public function index()
     {
+        $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
+        $varian = DB::table('tbl_varian')->get();
         $data_quantityProduction = DB::table('tbl_quantity_production')->get();
+        return view('QuantityProduction.index',[
+            'data_quantityProduction'=> $data_quantityProduction,
+            'poproduksi'=>$poproduksi,
+            'varian'=>$varian
+            ]);
+    }
+
+    public function detail($id)
+    {
+        $data_quantityProduction = DB::table('tbl_quantity_production')->where('id_product',$id)->get();
         return view('QuantityProduction.index',['data_quantityProduction'=> $data_quantityProduction]);
     }
+
+    
 
     /**
      * Show the form for creating a new resource.
@@ -41,12 +55,14 @@ class quantityProductionController extends Controller
             id_product,
             reject_defect,
             sample,
-            reject_defect_hci) 
-            values (?,?,?,?)', [
+            reject_defect_hci,
+            production_finish_good) 
+            values (?,?,?,?,?)', [
             $request->id_product,
             $request->reject_defect,
             $request->sample,
-            $request->reject_defect_hci
+            $request->reject_defect_hci,
+            $request->production_finish_good
             ]);
         return redirect()->route('QuantityProduction.index');
     }
@@ -59,8 +75,9 @@ class quantityProductionController extends Controller
      */
     public function show($id)
     {
-        $tampil = DB::table('tbl_quantity_production')->where('id_quantity_production', $id)->get();
-        return view('QuantityProduction.tampil',['tampil'=> $tampil]);
+        // $tampil = DB::table('tbl_quantity_production')->where('id_quantity_production', $id)->get();
+        // return view('QuantityProduction.tampil',['tampil'=> $tampil]);
+        return redirect()->back();
     }
 
     /**

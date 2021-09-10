@@ -2,50 +2,43 @@
 @section('title','Filling Perfomance')
 
 @section('content')
+
 <div class="card mt-3 p-4 shadow-sm">
     <div class="table-responsive">
-        <a href="{{route('FillingPerfomance.create')}}" class="btn btn-success">Tambah Data</a><br>
-        <table class="mt-4 table table-bordered table-md table-hover bg-white text-center">
-    <thead>
-        <tr>
-            <th>no</th>
-            <th>id filling perfomance</th>
-            <th>id produk</th>
-            <th>no batch</th>
-            <th>start filling</th>
-            <th>stop filling</th>
-            <th>time</th>
-            <th>counter filling</th>
-            <th>Perfomance Rate filling</th>
-            <th colspan="3">Action</th>
-        </tr>
-    </thead>
+        <a href="{{route('FillingPerfomance.create')}}" class="btn btn-success">Tambah Data</a><br><br>
+        <table class="table table-bordered table-sm table-hover  text-center">
+        <thead class="bg-info text-white">
+            <tr >
+                <th width="10px" >no</th>
+                <th>id produk</th>
+                <th>Jumlah Batch</th>
+                <th>Jumlah Waktu</th>
+                <th>Performance Rate Filling</th>
+                <th>Production Order</th>
+                <th >Action</th>
+            </tr>
+        </thead>
             <tbody>
                 @foreach ($data_index as $no => $data_index)
                 <tr>
-                    <th scope="row">{{ $no + 1 }}</th>
-                    <td>{{$data_index->id_filling_perfomance}}</td>
-                    <td>{{$data_index->id_product}}</td>
-                    <td>{{$data_index->no_batch}}</td>
-                    <td>{{$data_index->start_filling}}</td>
-                    <td>{{$data_index->stop_filling}}</td>
-                    <td>{{ \Carbon\Carbon::parse($data_index->start_filling)->diffinMinutes($data_index->stop_filling) }}
-
-                    </td>
-                    <td>{{$data_index->counter_filling}}</td>
-                    <td>-</td>
+                    <td scope="row">{{ $no + 1 }}</td>
                     <td>
-                        <a class="btn btn-info" href="{{route('FillingPerfomance.show',$data_index->id_filling_perfomance)}}">Show</a> 
+                    @foreach ($poproduksi->where('id',$data_index->id_product) as $poproduksinya)
+                        @foreach ($varian->where('id',$poproduksinya->id_varian) as $item)
+                            {{$item->kode_variant }} {{$item->ukuran}}
+                        @endforeach    
+                    @endforeach
+                    </td>
+                    <td>{{$data_index->total_batch}}</td>
+                    <td>jumlah waktu</td>
+                    <td>pfr</td>
+                    <td>
+                        @foreach ($poproduksi->where('id',$data_index->id_product) as $poproduksinya)
+                            {{number_format($poproduksinya->jumlah_po,0,'','.')}} 
+                        @endforeach
                     </td>
                     <td>
-                        <a class="btn btn-warning" href="{{route('FillingPerfomance.edit',$data_index->id_filling_perfomance)}}">Edit</a> 
-                    </td>
-                    <td>
-                     <form action="{{ route('FillingPerfomance.destroy',$data_index->id_filling_perfomance) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger" type="submit" onclick="return confirm('Hapus Data?')">Delete</button>
-                    </form>
+                        <a class="btn btn-warning" href="{{route('filling_detail',$data_index->id_product)}}">Show</a>  
                     </td>
                <tr>
                 @endforeach

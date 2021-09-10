@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ asset('assets/css/all.css') }}" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-timepicker.min.css') }}" crossorigin="anonymous">
 
   {{-- CSS Libraries --}}
   @yield('page-styles')

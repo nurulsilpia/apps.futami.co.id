@@ -5,7 +5,7 @@
     <div class="card mt-3 p-4 shadow-sm">
         <div class="table-responsive">
             <a href="{{ route('TimeReparation.create') }}" class="btn btn-success">Tambah Data</a>
-            <table align="center" border="1" class="mt-4 table table-striped table-hover bg-white text-center" id="tableAll">
+            <table class="mt-4 table table-bordered table-md table-hover bg-white text-center">
                 <thead>
                 <tr>
                     <th>No</th>
@@ -26,7 +26,7 @@
                             <td>{{$data_table->id_product}}</td>
                             <td>{{$data_table->start}}</td>
                             <td>{{$data_table->stop}}</td>
-                            <td></td>
+                            <td>{{ \Carbon\Carbon::parse($data_table->start)->diffinMinutes($data_table->stop) }}</td>
                             <td><a href="{{route('TimeReparation.show',$data_table->id_time_reparation)}}" class="btn btn-info">Show</a></td>
                             <td><a href="{{route('TimeReparation.edit',$data_table->id_time_reparation)}}"  class="btn btn-warning">Edit</a></td>  
                             <td>
