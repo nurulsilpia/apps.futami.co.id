@@ -15,7 +15,7 @@ class varianController extends Controller
      */
     public function index()
     {
-        $data_varian = DB::table('tbl_varian')->get();
+        $data_varian = DB::table('tbl_varian')->where('tampilkan',1)->get();
         return view('varian.index',['data_varian'=>$data_varian]);
     }
 
@@ -26,7 +26,7 @@ class varianController extends Controller
      */
     public function create()
     {
-        //
+        return view('varian.create');
     }
 
     /**
@@ -37,7 +37,20 @@ class varianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::insert('insert into tbl_varian (
+            id_customer, 
+            nama_variant, 
+            ukuran,
+            kode_variant,
+            tampilkan
+            ) values (?, ?,?,?,?)', [
+                '1',
+                $request->nama_variant,
+                $request->ukuran,
+                $request->kode_variant,
+                '1'
+            ]);
+        return redirect()->route('varian.index');
     }
 
     /**
@@ -48,7 +61,9 @@ class varianController extends Controller
      */
     public function show($id)
     {
-        //
+        $data_varian = DB::table('tbl_varian')->where('id',$id)->first();
+        // dd($data_varian);
+        return view('varian.show',['item'=>$data_varian]);
     }
 
     /**
@@ -71,7 +86,14 @@ class varianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('tbl_varian')
+        ->where('id', $id)
+        ->update([
+            'nama_variant' => $request->nama_variant,
+            'kode_variant' => $request->kode_variant,
+            'ukuran' => $request->ukuran,
+            ]);
+        return  redirect()->route('varian.index');
     }
 
     /**
@@ -82,6 +104,11 @@ class varianController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd($id);
+        DB::table('tbl_varian')
+        ->where('id', $id)
+        ->update(['tampilkan' => 0]);
+        // DB::table('ketentuan_klaim')->where('id','=', $id)->delete();
+        return  redirect()->back();
     }
 }

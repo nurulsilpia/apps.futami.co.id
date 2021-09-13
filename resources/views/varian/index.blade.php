@@ -9,14 +9,14 @@
                 <div class="card">
                     <div class="card-body">
                     <div class="table-responsive">
-                        <a href="" class="btn btn-success">Tambah Data</a><br><br>
+                        <a href=" {{route('varian.create')}} " class="btn btn-success">Tambah Data</a><br><br>
                         <table  class="table table-bordered table-sm table-hover  text-center">
                             <tr class="bg-info text-white">
                                 <th width="10px">NO.</th>
                                 <th>varian</th>
                                 <th>Kode</th>
                                 <th>Ukuran</th>
-                                <th width="150px">Action</th>
+                                <th width="140px">Action</th>
                             </tr>
                             @foreach ($data_varian as $no =>  $item)
                             
@@ -24,12 +24,15 @@
                                     <td>{{ $no+1}}</td>
                                     <td>{{ $item->nama_variant}}</td>
                                     <td>{{ $item->kode_variant}}</td>
-                                    <td>{{ $item->ukuran}}</td>
-                                    <td> <form action="{{-- route('ketentuanklaim.destroy',$item->id) --}}" method="POST">
-                                        <a class="btn btn-primary" href="{{-- route('ketentuanklaim.edit',$item->id) --}}">Edit</a>
+                                    <td>{{ $item->ukuran}} ML</td>
+                                    <td>
+                                        <form action="{{ route('varian.destroy',$item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button></td>
+                                        <a class="btn btn-primary" href="{{ route('varian.show',$item->id) }}">Edit</a>
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus Data?')">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
                         </table>
