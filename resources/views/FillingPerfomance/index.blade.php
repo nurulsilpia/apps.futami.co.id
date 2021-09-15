@@ -21,7 +21,7 @@
             <tbody>
                 @foreach ($data_index as $no => $data_index)
                 <tr>
-                    <td scope="row">{{ $no + 1 }}</td>
+                    <td scope="row">{{ $no + 1 }}</td> 
                     <td>
                     @foreach ($poproduksi->where('id',$data_index->id_product) as $poproduksinya)
                         @foreach ($varian->where('id',$poproduksinya->id_varian) as $item)

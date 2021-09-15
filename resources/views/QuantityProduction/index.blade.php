@@ -22,7 +22,7 @@
                 <tbody>
 
                     @foreach($data_quantityProduction as $no => $data_quantityProduction)
-                        <tr>
+                        <tr> 
                             <th scope="row">{{ $no + 1 }}</th>
                             <td>
                                 @foreach ($poproduksi->where('id',$data_quantityProduction->id_product) as $poproduksinya)

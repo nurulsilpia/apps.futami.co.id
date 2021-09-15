@@ -20,12 +20,14 @@ class FillingPerfomanceController extends Controller
           'SELECT 
             id_product,
             SUM(counter_filling) counter_filling, 
-            COUNT(counter_filling) total_batch
+            COUNT(counter_filling) total_batch,
+            TIMESTAMPDIFF(MINUTE,MIN(start_filling),max(stop_filling)) pfr
            FROM 
             tbl_filling_perfomance
            GROUP BY
             id_product'
         );
+    
 
         // dd($data_index);
 

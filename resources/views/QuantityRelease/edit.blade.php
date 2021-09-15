@@ -18,11 +18,11 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-bold">Reject + Defect Inspeksi</label>
-                            <input type="number" name="reject_defect_inspeksi" class="form-control" placeholder="Masukan Reject + Defect Inspeksi" required>
+                            <input type="number" name="reject_defect_inspeksi" class="form-control" placeholder="Masukan Reject + Defect Inspeksi"  value="{{ $data_table->reject_defect_inspeksi }}" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-bold">Reject + Defect Inspeksi HCI</label>
-                            <input type="number" name="reject_defect_inspeksi_hci" class="form-control" placeholder="Masukan Reject + Defect Inspeksi HCI" required>
+                            <input type="number" name="reject_defect_inspeksi_hci" class="form-control" placeholder="Masukan Reject + Defect Inspeksi HCI" value="{{ $data_table->reject_defect_inspeksi_hci }}" required>
                         </div>
                         <button type="submit" class="btn btn-primary" onclick="return confirm('Yakin Simpan Data?')">Simpan Data</button>
                 </div>

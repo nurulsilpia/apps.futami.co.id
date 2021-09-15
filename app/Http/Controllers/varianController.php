@@ -26,7 +26,7 @@ class varianController extends Controller
      */
     public function create()
     {
-        //
+        return view('varian.create');
     }
 
     /**

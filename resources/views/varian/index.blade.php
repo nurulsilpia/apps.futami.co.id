@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-body">
                     <div class="table-responsive">
-                        <a href="" class="btn btn-success">Tambah Data</a><br><br>
+                        <a href="{{route('varian.create')}}" class="btn btn-success">Tambah Data</a><br><br>
                         <table  class="table table-bordered table-sm table-hover  text-center">
                             <tr class="bg-info text-white">
                                 <th width="10px">NO.</th>
