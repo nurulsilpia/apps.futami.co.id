@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 //QuantityRelease
 Route::resource('QuantityRelease','\App\Http\Controllers\QuantityReleaseQcController');
+Route::get('/create','QuantityReleaseController@create');
 
 //TimeReparation
 Route::resource('TimeReparation','\App\Http\Controllers\TimeReparationContoller');

@@ -46,6 +46,8 @@ class QuantityReleaseQcController extends Controller
             $request->reject_defect_inspeksi_hci]);
         return redirect()->route('QuantityRelease.index')
                          ->with('success','Berhasil Disimpan');
+
+                        
     }
 
     /**
