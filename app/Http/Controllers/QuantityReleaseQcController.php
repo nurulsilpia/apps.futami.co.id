@@ -44,7 +44,8 @@ class QuantityReleaseQcController extends Controller
             $request->id_product,
             $request->reject_defect_inspeksi,
             $request->reject_defect_inspeksi_hci]);
-        return redirect()->route('QuantityRelease.index');
+        return redirect()->route('QuantityRelease.index')
+                         ->with('success','Created successfully');
     }
 
     /**
@@ -90,7 +91,8 @@ class QuantityReleaseQcController extends Controller
                 'reject_defect_inspeksi' => $request->reject_defect_inspeksi,
                 'reject_defect_inspeksi_hci' => $request->reject_defect_inspeksi_hci
             ]);
-        return redirect()->route('QuantityRelease.index');
+        return redirect()->route('QuantityRelease.index')
+                         ->with('update','Edited successfully');
     }
 
     /**
@@ -102,6 +104,7 @@ class QuantityReleaseQcController extends Controller
     public function destroy($id)
     {
         DB::table('tbl_quantity_release_qc')->where('id_quantity_release_qc',$id)->delete();
-        return redirect()->route('QuantityRelease.index');
+        return redirect()->route('QuantityRelease.index')
+                         ->with('delete','Deleted successfully');
     }
 }
