@@ -16,15 +16,35 @@ class FillingPerfomanceController extends Controller
      */
     public function index()
     {
-        $data_index = DB::table('tbl_filling_perfomance')->get();
-        return view('FillingPerfomance.index',['data_index'=>$data_index]);
+        $data_index = DB::select(
+          'SELECT 
+            id_product,
+            SUM(counter_filling) counter_filling, 
+            COUNT(counter_filling) total_batch
+           FROM 
+            tbl_filling_perfomance
+           GROUP BY
+            id_product'
+        );
+
+        // dd($data_index);
+
+        $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
+        $varian = DB::table('tbl_varian')->get();
+
+        return view('FillingPerfomance.index',[
+            'data_index'=>$data_index,
+            'poproduksi'=>$poproduksi,
+            "varian"=>$varian
+            ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function detail($id)
+    {
+        $data_index = DB::table('tbl_filling_perfomance')->where('id_product',$id)->get();
+        return view('FillingPerfomance.detail',['data_index'=>$data_index]);
+    }
+    
     public function create()
     {
         return view('FillingPerfomance.create-data');
@@ -47,7 +67,8 @@ class FillingPerfomanceController extends Controller
                 $request->stop_filling,
                 $request->counter_filling
             ]);
-            return redirect()->route('FillingPerfomance.index');
+            return redirect()->route('FillingPerfomance.index')
+                            ->with('success','Created successfully');
     }
 
     /**
@@ -94,7 +115,8 @@ class FillingPerfomanceController extends Controller
                 'stop_filling' => $request->stop_filling,
                 'counter_filling'=> $request->counter_filling
             ]);
-        return redirect()->route('FillingPerfomance.index');
+        return redirect()->route('FillingPerfomance.index')
+                         ->with('success','Edited successfully');
     }
 
     /**
@@ -106,6 +128,7 @@ class FillingPerfomanceController extends Controller
     public function destroy($id)
     {
         DB::table('tbl_filling_perfomance')->where('id_filling_perfomance',$id)->delete();
-        return redirect()->route('FillingPerfomance.index');
+        return redirect()->route('FillingPerfomance.index')
+                        ->with('success','Deleted successfully');
     }
 }
