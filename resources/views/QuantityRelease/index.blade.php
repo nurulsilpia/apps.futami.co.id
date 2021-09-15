@@ -2,20 +2,15 @@
 @section('title','Quantity Release QC')
 
 @section('content')
+
 @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
+    <p><script>alert('{{ $message }}');</script> </p>
 @endif
 @if ($message = Session::get('delete'))
-        <div class="alert alert-danger">
-            <p>{{ $message }}</p>
-        </div>
+    <p> <script>alert('{{ $message }}');</script> </p>
 @endif
 @if ($message = Session::get('update'))
-        <div class="alert alert-warning">
-            <p>{{ $message }}</p>
-        </div>
+    <p> <script>alert('{{ $message }}');</script> </p>
 @endif
 
     <div class="card mt-3 p-4 shadow-sm">
