@@ -3,7 +3,7 @@
 
 @section('content')
 
-        <div class="card-body">
+        <div class="card p-3">
             <form action="{{route('FillingPerfomance.store')}}" method="POST" class="mx-3">
                 @csrf
                 <div class="mb-3">
@@ -29,5 +29,5 @@
                 <button type="submit" class="btn btn-primary" >Simpan Data</button>
             </form>
         </div>
-    </div>
+    
 @endsection
