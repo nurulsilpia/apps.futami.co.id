@@ -64,7 +64,8 @@ class quantityProductionController extends Controller
             $request->reject_defect_hci,
             $request->production_finish_good
             ]);
-        return redirect()->route('QuantityProduction.index');
+        return redirect()->route('QuantityProduction.index')
+                         ->with('success','Data Berhasil Disimpan');
     }
 
     /**
@@ -109,7 +110,8 @@ class quantityProductionController extends Controller
                 'sample' => $request->sample,
                 'reject_defect_hci' => $request->reject_defect_hci
             ]);
-        return redirect()->route('QuantityProduction.index');
+        return redirect()->route('QuantityProduction.index')
+                         ->with('update','Data Berhasil Diedit');
     }
 
     /**
@@ -121,6 +123,7 @@ class quantityProductionController extends Controller
     public function destroy($id)
     {
         DB::table('tbl_quantity_production')->where('id_quantity_production',$id)->delete();
-        return redirect()->route('QuantityProduction.index');
+        return redirect()->route('QuantityProduction.index')
+                         ->with('delete','Data Berhasil Dihapus');
     }
 }

@@ -4,7 +4,7 @@
 @section('content')
 
 @if ($message = Session::get('success'))
-    <p><script>alert('{{ $message }}');</script> </p>
+    <p> <script>alert('{{ $message }}');</script> </p>
 @endif
 @if ($message = Session::get('delete'))
     <p> <script>alert('{{ $message }}');</script> </p>

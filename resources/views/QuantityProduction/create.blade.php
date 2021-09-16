@@ -27,7 +27,7 @@
                     <label class="form-label fw-bold">Production Finish Good</label>
                     <input type="number" name="production_finish_good" class="form-control" placeholder="Masukan Jumlah Production Finish Good" value="">
                 </div>
-                <button type="submit" class="btn btn-primary>Simpan Data</button>
+                <button type="submit" class="btn btn-primary">Simpan Data</button>
             </form>
         </div>
     </div>

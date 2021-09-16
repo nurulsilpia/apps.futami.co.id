@@ -2,6 +2,16 @@
 @section('title','Quantity Production')
 
 @section('content')
+
+@if ($message = Session::get('success'))
+    <p> <script>alert('{{ $message }}');</script> </p>
+@endif
+@if ($message = Session::get('delete'))
+    <p> <script>alert('{{ $message }}');</script> </p>
+@endif
+@if ($message = Session::get('update'))
+    <p> <script>alert('{{ $message }}');</script> </p>
+@endif
     
     <div class="card mt-3 p-4 shadow-sm">
         <div class="table-responsive">
