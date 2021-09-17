@@ -55,14 +55,12 @@ class quantityProductionController extends Controller
             id_product,
             reject_defect,
             sample,
-            reject_defect_hci,
-            production_finish_good) 
-            values (?,?,?,?,?)', [
+            reject_defect_hci) 
+            values (?,?,?,?)', [
             $request->id_product,
             $request->reject_defect,
             $request->sample,
-            $request->reject_defect_hci,
-            $request->production_finish_good
+            $request->reject_defect_hci
             ]);
         return redirect()->route('QuantityProduction.index')
                          ->with('success','Data Berhasil Disimpan');

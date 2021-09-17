@@ -25,11 +25,14 @@
                                     <td>{{ $item->nama_variant}}</td>
                                     <td>{{ $item->kode_variant}}</td>
                                     <td>{{ $item->ukuran}}</td>
-                                    <td> <form action="{{-- route('ketentuanklaim.destroy',$item->id) --}}" method="POST">
-                                        <a class="btn btn-primary" href="{{-- route('ketentuanklaim.edit',$item->id) --}}">Edit</a>
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button></td>
+                                    <td> 
+                                        <form action="{{ route('varian.destroy',$item->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger" type="submit" onclick="return confirm('Hapus Data?')">Delete</button>
+                                </form>
+                                    </td>
+                                    
                                 </tr>
                                 @endforeach
                         </table>

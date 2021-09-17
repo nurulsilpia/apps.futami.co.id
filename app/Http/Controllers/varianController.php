@@ -37,7 +37,18 @@ class varianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::insert('insert into tbl_varian (
+            id_customer,
+            nama_variant,
+            kode_variant,
+            ukuran)
+            values (?,?,?,?)', [
+            $request->id_customer,
+            $request->nama_variant,
+            $request->kode_variant,
+            $request->ukuran]);
+        return redirect()->route('varian.index')
+                         ->with('success','Berhasil Disimpan');
     }
 
     /**
@@ -59,7 +70,7 @@ class varianController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -82,6 +93,8 @@ class varianController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tbl_varian')->where('id',$id)->delete();
+        return redirect()->route('varian.index')
+                         ->with('delete','Berhasil dihapus');
     }
 }

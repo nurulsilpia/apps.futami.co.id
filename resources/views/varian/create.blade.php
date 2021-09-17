@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Tambah User')
+@section('title', 'Tambah Data Varian')
 
 @section('content')
 
@@ -7,31 +7,32 @@
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
-                    <form action="{{ route('downtime.create') }}" method="POST">
+                    <form action="{{ route('varian.store') }}" method="POST">
                         @csrf
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-12">
+                            <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>* Nama/username</label>
-                                        <input type="text" placeholder="Input Nama" name="name" class="form-control">
+                                        <label>id customer</label>
+                                        <input type="number" name="id_customer" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>* Departemen</label><br>
-                                        <select class="form-control" name="departement" id="departement">
-                                            <option value="">--Pilih Departement--</option> 
-                                            @foreach ($departement as $departemen_item)
-                                            <option value="{{$departemen_item->id}}">{{$departemen_item->departemen}}</option> 
-                                            @endforeach
-                                        </select>
+                                        <label>* Nama Varian</label>
+                                        <input type="text" name="nama_variant" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label><i>password default : 12345678<br>
-                                        Nama akan sekaligus sebagai username</i></label>
+                                        <label>* Ukuran</label>
+                                        <input type="number" name="ukuran" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>* Kode Varian</label>
+                                        <input type="text" name="kode_variant" class="form-control" required>
                                     </div>
                                 </div>
 
