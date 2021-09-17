@@ -53,3 +53,5 @@ Route::resource('QuantityProduction','\App\Http\Controllers\QuantityProductionCo
 //FillingPerfomance
 Route::get('FillingPerfomance/detail/{id}','\App\Http\Controllers\FillingPerfomanceController@detail')->name('filling_detail');
 Route::resource('FillingPerfomance','\App\Http\Controllers\FillingPerfomanceController');
+
+
