@@ -36,6 +36,11 @@ class QuantityReleaseQcController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'id_product'=>'required',
+            'reject_defect_inspeksi'=>'required',
+            'reject_defect_inspeksi_hci'=>'required',
+        ]);
         DB::insert('insert into tbl_quantity_release_qc (
             id_product,
             reject_defect_inspeksi,
@@ -43,11 +48,10 @@ class QuantityReleaseQcController extends Controller
             values (?,?,?)', [
             $request->id_product,
             $request->reject_defect_inspeksi,
-            $request->reject_defect_inspeksi_hci]);
+            $request->reject_defect_inspeksi_hci
+            ]);
         return redirect()->route('QuantityRelease.index')
-                         ->with('success','Berhasil Disimpan');
-
-                        
+                         ->with('success','Data Berhasil Disimpan');
     }
 
     /**
