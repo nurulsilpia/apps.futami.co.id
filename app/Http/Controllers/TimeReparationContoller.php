@@ -36,6 +36,12 @@ class TimeReparationContoller extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'id_product'=>'required',
+            'start'=>'required',
+            'stop'=>'required',
+        ]);
+
         DB::insert('insert into tbl_time_reparation (
             id_product,
             start,
