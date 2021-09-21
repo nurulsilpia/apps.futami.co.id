@@ -51,6 +51,13 @@ class quantityProductionController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'id_product'=>'required',
+            'reject_defect'=>'required',
+            'sample'=>'required',
+            'reject_defect_hci'=>'required'
+        ]);
+
         DB::insert('insert into tbl_quantity_production (
             id_product,
             reject_defect,
@@ -100,6 +107,13 @@ class quantityProductionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'id_product'=>'required',
+            'reject_defect'=>'required',
+            'sample'=>'required',
+            'reject_defect_hci'=>'required'
+        ]);
+
         DB::table('tbl_quantity_production')
             ->where('id_quantity_production', $id) 
             ->update([
