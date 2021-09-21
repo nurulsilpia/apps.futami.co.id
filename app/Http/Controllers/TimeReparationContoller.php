@@ -41,6 +41,7 @@ class TimeReparationContoller extends Controller
             'start'=>'required',
             'stop'=>'required',
         ]);
+        
         DB::insert('insert into tbl_time_reparation (
             id_product,
             start,
