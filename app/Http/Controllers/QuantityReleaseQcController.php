@@ -40,7 +40,7 @@ class QuantityReleaseQcController extends Controller
             'id_product'=>'required',
             'reject_defect_inspeksi'=>'required',
             'reject_defect_inspeksi_hci'=>'required',
-        ]);
+        ]); 
         
         DB::insert('insert into tbl_quantity_release_qc (
             id_product,
