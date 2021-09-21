@@ -90,6 +90,12 @@ class QuantityReleaseQcController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'id_product'=>'required',
+            'reject_defect_inspeksi'=>'required',
+            'reject_defect_inspeksi_hci'=>'required',
+        ]); 
+
         // dd($request);
         DB::table('tbl_quantity_release_qc')
             ->where('id_quantity_release_qc', $id) 

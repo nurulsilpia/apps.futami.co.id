@@ -88,7 +88,13 @@ class TimeReparationContoller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    { 
+        $request->validate([
+            'id_product'=>'required',
+            'start'=>'required',
+            'stop'=>'required',
+        ]);
+        
         // dd($request);
         DB::table('tbl_time_reparation')
             ->where('id_time_reparation', $id) 
