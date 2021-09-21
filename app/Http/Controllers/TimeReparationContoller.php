@@ -41,7 +41,6 @@ class TimeReparationContoller extends Controller
             'start'=>'required',
             'stop'=>'required',
         ]);
-
         DB::insert('insert into tbl_time_reparation (
             id_product,
             start,
@@ -50,7 +49,7 @@ class TimeReparationContoller extends Controller
             $request->id_product,
             $request->start,
             $request->stop]);
-        return redirect()->route('TimeReparation.index')
+        return redirect()->route('TimeReparation.index') 
                          ->with('success','Berhasil Disimpan');
     }
 
