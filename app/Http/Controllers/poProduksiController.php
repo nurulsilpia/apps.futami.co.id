@@ -51,9 +51,10 @@ class poProduksiController extends Controller
             standar_bph,
             note,
             mulai_produksi,
-            selesai_produksi
+            selesai_produksi,
+            tanggal_dibuat
             )
-            values (?,?,?,?,?)',[
+            values (?,?,?,?,?,?,?,?)',[
                 $request->id_varian,
                 $request->jumlah_po,
                 $request->status,
@@ -61,6 +62,7 @@ class poProduksiController extends Controller
                 $request->note,
                 $request->mulai_produksi,
                 $request->selesai_produksi,
+                $request->tanggal_dibuat,
             ]);
             return redirect()->route('poproduksi.index');
     }

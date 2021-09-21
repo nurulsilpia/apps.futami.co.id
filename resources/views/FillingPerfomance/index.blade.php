@@ -10,7 +10,7 @@
         <thead class="bg-info text-white">
             <tr >
                 <th width="10px" >no</th>
-                <th>id produk</th>
+                <th>varian</th>
                 <th>Jumlah Batch</th>
                 <th>Jumlah Waktu</th>
                 <th>Performance Rate Filling</th>
