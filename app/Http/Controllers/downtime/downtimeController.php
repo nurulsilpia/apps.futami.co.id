@@ -37,7 +37,9 @@ class downtimeController extends Controller
      */
     public function create()
     {
-        return view('downtime.create');
+        $data_jenis_downtime = DB::table('tbl_jenis_downtime')->get();
+        $data_unit_downtime = DB::table('tbl_unit_downtime')->get();
+        return view('downtime.create', ['jenis_downtime'=>$data_jenis_downtime]);
     }
 
     /**
@@ -48,7 +50,11 @@ class downtimeController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->back()->withErrors($validator)->withInput();
+        // return redirect()->back()->withErrors($validator)->withInput();
+        $data_jenis_downtime = DB::table('tbl_jenis_downtime')->get();
+        $data_unit_downtime = DB::table('tbl_unit_downtime')->get();
+
+        return redirect()->route('downtime.index');
     }
 
     /**

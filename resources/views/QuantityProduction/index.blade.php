@@ -44,7 +44,12 @@
                             <td>{{ $data_quantityProduction->sample }}</td>
                             <td>{{ $data_quantityProduction->reject_defect_hci }}</td>
                             <td>0</td>
-                            <td></td>
+                            <td>
+                                <?php
+                                    $total = $data_quantityProduction->reject_defect + $data_quantityProduction->sample + $data_quantityProduction->reject_defect_hci;
+                                    echo "$total";
+                                ?>
+                            </td>
                             
                             <td>
                                 <a class="btn btn-warning" href="{{route('QuantityProduction.edit',$data_quantityProduction->id_quantity_production)}}">Edit</a> 

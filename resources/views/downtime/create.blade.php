@@ -13,25 +13,42 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>* Nama/username</label>
-                                        <input type="text" placeholder="Input Nama" name="name" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>* Departemen</label><br>
-                                        <select class="form-control" name="departement" id="departement">
-                                            <option value="">--Pilih Departement--</option> 
-                                            @foreach ($departement as $departemen_item)
-                                            <option value="{{$departemen_item->id}}">{{$departemen_item->departemen}}</option> 
+                                        <label>Jenis Downtime</label>
+                                        <select class="form-control" name="jenis_downtime" id="jenis_downtime">
+                                            <option selected>--Pilih Jenis Downtime--</option> 
+                                            @foreach ($data_jenis_downtime as $jenis_downtime)
+                                                <option value="jenis_downtime->id">{{ $jenis_downtime->nama_jenis_downtime }}</option> 
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label><i>password default : 12345678<br>
-                                        Nama akan sekaligus sebagai username</i></label>
+                                        <label>Unit Downtime</label><br>
+                                        <select class="form-control" name="unit_downtime" id="unit_downtime">
+                                            <option selected>--Pilih Unit Downtime--</option> 
+                                            
+                                                <option value="">ini value</option> 
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Root Cause</label><br>
+                                        <input type="text" placeholder="Masukan Root Cause" name="root_cause" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Mulai</label><br>
+                                        <input type="datetime-local" name="mulai" class="form-control" placeholder="Masukan waktu mulai" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Selesai</label><br>
+                                        <input type="datetime-local" name="selesai" class="form-control" placeholder="Masukan waktu selesai" required>
                                     </div>
                                 </div>
 
