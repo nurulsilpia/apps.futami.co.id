@@ -42,7 +42,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="text-uppercase">Root Cause</label><br>
-                                        <input type="text" placeholder="Masukan Root Cause" name="root_cause" class="form-control  text-uppercase">
+                                        <input type="text" placeholder="Masukan Root Cause" name="root_cause" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
