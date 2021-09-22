@@ -54,14 +54,19 @@ class downtimeController extends Controller
     public function store(Request $request)
     {
         // return redirect()->back()->withErrors($validator)->withInput();
-        DB::insert('insert into tbl_unit_downtime (
-            jenis_downtime, unit_downtime, root_cause, mulai_downtime, selesai_downtime)
-            values (?,?,?,?,?)',[
-                $request->jenis_downtime,
-                $request->unit_downtime,
+        DB::insert('insert into tbl_downtime(
+            id_produksi,
+            id_jenis_downtime,
+            id_unit_downtime,
+            root_cause,
+            mulai_downtime,
+            selesai_downtime
+            )
+            values (?,?,?)',
+            [
                 $request->root_cause,
                 $request->mulai_downtime,
-                $request->selesai_downtime
+                $request->selesai_downtime,
             ]);
             return redirect()->route('downtime.index');
     }
