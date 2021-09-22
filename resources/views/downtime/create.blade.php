@@ -16,8 +16,8 @@
                                         <label>Jenis Downtime</label>
                                         <select class="form-control" name="jenis_downtime" id="jenis_downtime">
                                             <option selected>--Pilih Jenis Downtime--</option> 
-                                            @foreach ($data_jenis_downtime as $jenis_downtime)
-                                                <option value="jenis_downtime->id">{{ $jenis_downtime->nama_jenis_downtime }}</option> 
+                                            @foreach ($jenis_downtime as $jenis_downtime)
+                                                <option value="{{$jenis_downtime->id}}">{{ $jenis_downtime->nama_jenis_downtime }}</option> 
                                             @endforeach
                                         </select>
                                     </div>
