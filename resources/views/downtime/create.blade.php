@@ -27,9 +27,9 @@
                                         <label>Unit Downtime</label><br>
                                         <select class="form-control" name="unit_downtime" id="unit_downtime">
                                             <option selected>--Pilih Unit Downtime--</option> 
-                                            
-                                                <option value="">ini value</option> 
-                                            
+                                            @foreach ($unit_downtime as $unit_downtime)
+                                                <option value="{{ $unit_downtime->id }}">{{ $unit_downtime->nama_unit_downtime }}</option> 
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -42,13 +42,13 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Mulai</label><br>
-                                        <input type="datetime-local" name="mulai" class="form-control" placeholder="Masukan waktu mulai" required>
+                                        <input type="datetime-local" name="mulai_downtime" class="form-control" placeholder="Masukan waktu mulai" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Selesai</label><br>
-                                        <input type="datetime-local" name="selesai" class="form-control" placeholder="Masukan waktu selesai" required>
+                                        <input type="datetime-local" name="selesai_downtime" class="form-control uppercase" placeholder="Masukan waktu selesai" required>
                                     </div>
                                 </div>
 
