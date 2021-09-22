@@ -27,7 +27,7 @@
                                     <td>{{ $no+1}}</td>
                                     <td>
                                         @foreach ($poproduksi->where('id',$item->id_produksi) as $poproduksinya)
-                                            @foreach ($varian->where('id',$poproduksinya->id_varian) as $data_variannya)
+                                            @foreach ($data_varian->where('id',$poproduksinya->id_varian) as $data_variannya)
                                                 <a href="{{route('poproduksi.edit',$item->id_produksi)}}">{{$data_variannya->kode_variant}} {{$data_variannya->ukuran}}</a>
                                             @endforeach
                                         @endforeach

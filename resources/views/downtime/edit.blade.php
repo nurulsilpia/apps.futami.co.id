@@ -8,6 +8,7 @@
         <form action="{{ route('downtime.update',$item->id) }}" method="POST">
             @method('PUT')
             <div class="card-body">
+                @csrf
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
