@@ -63,7 +63,7 @@
 
                     <div class="col-md-12">
                         <div class="card-footer text-right">
-                            <button class="btn btn-primary mr-1" type="submit">Edit</button>
+                            <button class="btn btn-primary mr-1" type="submit">Edit Data</button>
                         </div>
                     </div>
                 </div>
