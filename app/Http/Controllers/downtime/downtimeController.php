@@ -86,9 +86,15 @@ class downtimeController extends Controller
      */
     public function edit($id)
     {
+        $data_jenis_downtime = DB::table('tbl_jenis_downtime')->get();
+        $data_unit_downtime = DB::table('tbl_unit_downtime')->get();
         $edit = DB::table('tbl_downtime')->where('id',$id)->get();
         // dd($edit);
-        return view('downtime.edit',['edit'=> $edit]);
+        return view('downtime.edit',[
+            'edit'=> $edit,
+            'id_jenis_downtime'=>$data_jenis_downtime,
+            'id_unit_downtime'=>$data_unit_downtime
+        ]);
     }
 
     /**
