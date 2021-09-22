@@ -34,11 +34,11 @@
                                     </td>
                                     <td>@foreach ($data_jenis_downtime->where('id',$item->id_jenis_downtime) as $item_jenis_downtime)
                                         {{$item_jenis_downtime->nama_jenis_downtime}}
-                                    @endforeach
-                                        </td>
+                                        @endforeach
+                                    </td>
                                     <td>@foreach ($data_unit_downtime->where('id',$item->id_unit_downtime) as $item_unit_downtime)
                                         {{$item_unit_downtime->nama_unit_downtime}}
-                                    @endforeach</td>
+                                        @endforeach</td>
                                     <td>{{$item->root_cause}}</td>
                                     <td>
                                         {{ \Carbon\Carbon::parse( $item->mulai_downtime )->diffInMinutes( $item->selesai_downtime ) }} Menit
@@ -49,15 +49,14 @@
                                         <a class="btn btn-primary" href="{{-- route('ketentuanklaim.edit',$item->id) --}}">Edit</a>
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button></td>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </td>
                                 </tr>
                                 @endforeach
                         </table>
                     </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
