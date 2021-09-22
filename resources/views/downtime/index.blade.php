@@ -45,8 +45,8 @@
                                     </td>
                                     <td>{{$item->mulai_downtime}}</td>
                                     <td>{{$item->selesai_downtime}}</td>
-                                    <td> <form action="{{-- route('ketentuanklaim.destroy',$item->id) --}}" method="POST">
-                                        <a class="btn btn-primary" href="{{-- route('ketentuanklaim.edit',$item->id) --}}">Edit</a>
+                                    <td> <form action="{{ route('downtime.destroy',$item->id) }}" method="POST">
+                                        <a class="btn btn-primary" href="{{ route('downtime.edit',$item->id) }}">Edit</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>

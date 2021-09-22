@@ -86,7 +86,15 @@ class downtimeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data_jenis_downtime = DB::table('tbl_jenis_downtime')->get();
+        $data_unit_downtime = DB::table('tbl_unit_downtime')->get();
+        $edit = DB::table('tbl_downtime')->where('id',$id)->get();
+        // dd($edit);
+        return view('downtime.edit',[
+            'edit'=> $edit,
+            'id_jenis_downtime'=>$data_jenis_downtime,
+            'id_unit_downtime'=>$data_unit_downtime
+        ]);
     }
 
     /**
@@ -98,7 +106,17 @@ class downtimeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('tbl_downtime')
+            ->where('id', $id) 
+            ->update([
+                'id_produksi'=> $request->id_produksi,
+                'id_jenis_downtime' => $request->id_jenis_downtime,
+                'id_unit_downtime' => $request->id_unit_downtime,
+                'root_cause'=> $request->root_cause,
+                'mulai_downtime' => $request->mulai_downtime,
+                'selesai_downtime' => $request->selesai_downtime
+            ]);
+        return redirect()->route('downtime.index');
     }
 
     /**
@@ -109,6 +127,7 @@ class downtimeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tbl_downtime')->where('id',$id)->delete();
+        return redirect()->route('downtime.index');
     }
 }
