@@ -13,8 +13,14 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Jenis Downtime</label>
-                                        <select class="form-control" name="jenis_downtime" id="jenis_downtime">
+                                        <label class="text-uppercase">id produksi</label><br>
+                                        <input type="number" placeholder="Masukan id produksi" name="id_produksi" class="form-control  text-uppercase">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="text-uppercase">Jenis Downtime</label>
+                                        <select class="form-control" name="id_jenis_downtime" id="jenis_downtime">
                                             <option selected>--Pilih Jenis Downtime--</option> 
                                             @foreach ($jenis_downtime as $jenis_downtime)
                                                 <option value="{{$jenis_downtime->id}}">{{ $jenis_downtime->nama_jenis_downtime }}</option> 
@@ -24,8 +30,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Unit Downtime</label><br>
-                                        <select class="form-control" name="unit_downtime" id="unit_downtime">
+                                        <label class="text-uppercase">Unit Downtime</label><br>
+                                        <select class="form-control" name="id_unit_downtime" id="unit_downtime">
                                             <option selected>--Pilih Unit Downtime--</option> 
                                             @foreach ($unit_downtime as $unit_downtime)
                                                 <option value="{{ $unit_downtime->id }}">{{ $unit_downtime->nama_unit_downtime }}</option> 
@@ -35,20 +41,18 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Root Cause</label><br>
+                                        <label class="text-uppercase">Root Cause</label><br>
                                         <input type="text" placeholder="Masukan Root Cause" name="root_cause" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Mulai</label><br>
+                                        <label class="text-uppercase">Mulai</label><br>
                                         <input type="datetime-local" name="mulai_downtime" class="form-control" placeholder="Masukan waktu mulai" required>
-                                    </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Selesai</label><br>
-                                        <input type="datetime-local" name="selesai_downtime" class="form-control uppercase" placeholder="Masukan waktu selesai" required>
+                                        <label class="text-uppercase">Selesai</label><br>
+                                        <input type="datetime-local" name="selesai_downtime" class="form-control" placeholder="Masukan waktu selesai" required>
                                     </div>
                                 </div>
 
