@@ -20,32 +20,27 @@
                                         @enderror
                                     </div>
                                 </div>
+                                
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="text-uppercase">Jenis Downtime</label>
-                                        <select class="form-control @error('jenis_downtime') is invalid @enderror" name="id_jenis_downtime" id="jenis_downtime" value="{{old('jenis_downtime')}}">
-                                            <option selected>--Pilih Jenis Downtime--</option> 
+                                        <label>Jenis downtime</label><br>
+                                        <select class="form-control" name="id_jenis_downtime" id="id_jenis_downtime" required>
+                                            <option value="">--Pilih Jenis downtime--</option> 
                                             @foreach ($jenis_downtime as $jenis_downtime)
-                                                <option value="{{$jenis_downtime->id}}">{{ $jenis_downtime->nama_jenis_downtime }}</option> 
+                                            <option value="{{$jenis_downtime->id}}">{{ $jenis_downtime->nama_jenis_downtime }}</option> 
                                             @endforeach
                                         </select>
-                                        @error('jenis_downtime')
-                                            <div class="alert alert-danger">{{$message="Jenis Downtime harus di isi"}}</div>
-                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="text-uppercase">Unit Downtime</label><br>
-                                        <select class="form-control @error('unit_downtime') is invalid @enderror" name="id_unit_downtime" id="unit_downtime" value="{{old('unit_downtime')}}">
-                                            <option selected>--Pilih Unit Downtime--</option> 
+                                        <label>Unit downtime</label><br>
+                                        <select class="form-control" name="id_unit_downtime" id="id_unit_downtime" required>
+                                            <option value="">--Pilih Unit downtime--</option> 
                                             @foreach ($unit_downtime as $unit_downtime)
-                                                <option value="{{ $unit_downtime->id }}">{{ $unit_downtime->nama_unit_downtime }}</option> 
+                                            <option value="{{$unit_downtime->id}}">{{ $unit_downtime->nama_unit_downtime}}</option> 
                                             @endforeach
                                         </select>
-                                        @error('unit_downtime')
-                                            <div class="alert alert-danger">{{$message="Unit Downtime harus di isi"}}</div>
-                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-3">
