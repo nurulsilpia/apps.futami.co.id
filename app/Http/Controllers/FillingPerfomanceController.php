@@ -59,7 +59,13 @@ class FillingPerfomanceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   $request->validate([
+        'id_product'=>'required',
+        'no_batch'=>'required',
+        'start_filling'=>'required',
+        'stop_filling'=>'required',
+        'counter_filling'=>'required',
+    ]);
         DB::insert('insert into tbl_filling_perfomance (
             id_product, no_batch, start_filling, stop_filling, counter_filling)
             values (?,?,?,?,?)',[

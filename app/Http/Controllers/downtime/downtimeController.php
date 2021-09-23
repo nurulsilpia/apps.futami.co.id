@@ -52,7 +52,14 @@ class downtimeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   $request->validate([
+        'jenis_downtime'=>'required',
+        'unit_downtime'=>'required',
+        'id_produksi'=>'required',
+        'root_cause'=>'required',
+        'mulai_downtime'=>'required',
+        'selesai_downtime'=>'required',
+    ]);
         // return redirect()->back()->withErrors($validator)->withInput();
         DB::insert('insert into tbl_downtime (
             id_produksi, id_jenis_downtime, id_unit_downtime, root_cause, mulai_downtime, selesai_downtime)

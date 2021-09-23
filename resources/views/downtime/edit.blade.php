@@ -52,8 +52,10 @@
                         </div>
                     </div>
                     <div class="col-md-12">
+                        <div class="form-group">
                             <label class="text-uppercase">Mulai</label><br>
                             <input type="datetime-local" name="mulai_downtime" class="form-control" placeholder="Masukan waktu mulai" value="{{ $item->mulai_downtime }}" required>
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
