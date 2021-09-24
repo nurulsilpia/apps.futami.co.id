@@ -40,16 +40,19 @@ class QuantityReleaseQcController extends Controller
             'id_product'=>'required',
             'reject_defect_inspeksi'=>'required',
             'reject_defect_inspeksi_hci'=>'required',
+            'qc_finish_good'=>'required',
         ]); 
         
         DB::insert('insert into tbl_quantity_release_qc (
             id_product,
             reject_defect_inspeksi,
-            reject_defect_inspeksi_hci) 
-            values (?,?,?)', [
+            reject_defect_inspeksi_hci,
+            qc_finish_good) 
+            values (?,?,?,?)', [
             $request->id_product,
             $request->reject_defect_inspeksi,
-            $request->reject_defect_inspeksi_hci
+            $request->reject_defect_inspeksi_hci,
+            $request->qc_finish_good
             ]);
         return redirect()->route('QuantityRelease.index')
                          ->with('success','Data Berhasil Disimpan');
@@ -94,6 +97,7 @@ class QuantityReleaseQcController extends Controller
             'id_product'=>'required',
             'reject_defect_inspeksi'=>'required',
             'reject_defect_inspeksi_hci'=>'required',
+            'qc_finish_good'=>'required',
         ]); 
 
         // dd($request);
@@ -102,7 +106,8 @@ class QuantityReleaseQcController extends Controller
             ->update([
                 'id_product' => $request->id_product,
                 'reject_defect_inspeksi' => $request->reject_defect_inspeksi,
-                'reject_defect_inspeksi_hci' => $request->reject_defect_inspeksi_hci
+                'reject_defect_inspeksi_hci' => $request->reject_defect_inspeksi_hci,
+                'qc_finish_good' => $request->qc_finish_good
             ]);
         return redirect()->route('QuantityRelease.index')
                          ->with('update','Berhasil Diedit');
