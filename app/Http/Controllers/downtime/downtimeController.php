@@ -53,8 +53,7 @@ class downtimeController extends Controller
      */
     public function store(Request $request)
     {   $request->validate([
-        'jenis_downtime'=>'required',
-        'unit_downtime'=>'required',
+        
         'id_produksi'=>'required',
         'root_cause'=>'required',
         'mulai_downtime'=>'required',
