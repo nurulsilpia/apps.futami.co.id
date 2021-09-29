@@ -49,7 +49,7 @@
                             </td>
                             <td>
                                 <?php
-                                    $total = $data_quantityProduction->reject_defect + $data_quantityProduction->sample + $data_quantityProduction->reject_defect_hci;
+                                    $total = $data_quantityProduction->reject_defect + $data_quantityProduction->sample + $data_quantityProduction->reject_defect_hci + $finish_good;
                                     echo "$total";
                                 ?>
                             </td>
