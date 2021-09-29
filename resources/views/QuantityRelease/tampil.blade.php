@@ -25,7 +25,7 @@
                             <td>{{$data_table->id_product}}</td>
                             <td>{{$data_table->reject_defect_inspeksi}}</td>
                             <td>{{$data_table->reject_defect_inspeksi_hci}}</td>
-                            <td>{{$data_table->qc_finish_good}}</td>
+                            <td></td>
                         </tr>
                 @endforeach
                 

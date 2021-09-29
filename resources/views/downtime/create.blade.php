@@ -20,11 +20,10 @@
                                         @enderror
                                     </div>
                                 </div>
-                                
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Jenis downtime</label><br>
-                                        <select class="form-control" name="id_jenis_downtime" id="id_jenis_downtime" required>
+                                        <select class="form-control" name="id_jenis_downtime" id="id_jenis_downtime">
                                             <option value="">--Pilih Jenis downtime--</option> 
                                             @foreach ($jenis_downtime as $jenis_downtime)
                                             <option value="{{$jenis_downtime->id}}">{{ $jenis_downtime->nama_jenis_downtime }}</option> 

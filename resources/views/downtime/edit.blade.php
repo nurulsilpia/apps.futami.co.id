@@ -19,7 +19,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="text-uppercase">Jenis Downtime</label>
-                            <select class="form-control" name="id_jenis_downtime" id="jenis_downtime">
+                            <select class="form-control" name="id_jenis_downtime" id="jenis_downtime" required>
                                 @foreach ($id_jenis_downtime->where('id', $item->id_jenis_downtime) as $jenis_downtime)
                                     <option selected disabled value="{{ $jenis_downtime->id }}">{{ $jenis_downtime->nama_jenis_downtime }}</option> 
                                 @endforeach

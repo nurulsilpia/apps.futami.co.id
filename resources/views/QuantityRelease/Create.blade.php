@@ -28,13 +28,6 @@
                         <div class="alert alert-danger">{{$message="Reject + Defect Inspeksi HCI harus di isi"}}</div>
                     @enderror
                 </div>
-                <div class="mb-3">
-                    <label class="form-label fw-bold">QC Finish Good</label>
-                    <input type="number" name="qc_finish_good" class="form-control @error('qc_finish_good') is invalid @enderror" placeholder="Masukan QC Finish Good" value="{{old('qc_finish_good')}}">
-                    @error('qc_finish_good')
-                        <div class="alert alert-danger">{{$message="QC Finish Good harus di isi"}}</div>
-                    @enderror
-                </div>
                 <button type="submit" class="btn btn-primary" onclick="return confirm('Yakin Simpan Data?')">Simpan Data</button>
             </form>
         </div>

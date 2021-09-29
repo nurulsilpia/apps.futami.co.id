@@ -35,7 +35,7 @@
                             <td>{{$data_table->id_product}}</td>
                             <td>{{$data_table->reject_defect_inspeksi}}</td>
                             <td>{{$data_table->reject_defect_inspeksi_hci}}</td>
-                            <td>{{$data_table->qc_finish_good}}</td>
+                            <td></td>
                             <td><a href="{{route('QuantityRelease.show',$data_table->id_quantity_release_qc)}}" class="btn btn-info">Show</a></td>
                             <td><a href="{{route('QuantityRelease.edit',$data_table->id_quantity_release_qc)}}"  class="btn btn-warning">Edit</a></td>  
                             <td>
