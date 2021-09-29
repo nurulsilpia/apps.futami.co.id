@@ -23,7 +23,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="text-uppercase">Jenis Downtime</label>
-                                        <select class="form-control @error('jenis_downtime') is invalid @enderror" name="id_jenis_downtime" id="jenis_downtime" value="{{old('jenis_downtime')}}">
+                                        <select class="form-control @error('jenis_downtime') is invalid @enderror" name="id_jenis_downtime" id="jenis_downtime" value="{{old('jenis_downtime')}}" required>
                                             <option selected>--Pilih Jenis Downtime--</option> 
                                             @foreach ($jenis_downtime as $jenis_downtime)
                                                 <option value="{{$jenis_downtime->id}}">{{ $jenis_downtime->nama_jenis_downtime }}</option> 
@@ -37,7 +37,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="text-uppercase">Unit Downtime</label><br>
-                                        <select class="form-control @error('unit_downtime') is invalid @enderror" name="id_unit_downtime" id="unit_downtime" value="{{old('unit_downtime')}}">
+                                        <select class="form-control @error('unit_downtime') is invalid @enderror" name="id_unit_downtime" id="unit_downtime" value="{{old('unit_downtime')}}" required>
                                             <option selected>--Pilih Unit Downtime--</option> 
                                             @foreach ($unit_downtime as $unit_downtime)
                                                 <option value="{{ $unit_downtime->id }}">{{ $unit_downtime->nama_unit_downtime }}</option> 

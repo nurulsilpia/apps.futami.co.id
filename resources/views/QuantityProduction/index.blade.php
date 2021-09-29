@@ -20,7 +20,7 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>ID Product</th>
+                    <th>Varian</th>
                     <th>Reject + Defect</th>
                     <th>Sample</th>
                     <th>Reject + Defect HCI</th>
@@ -39,11 +39,14 @@
                                     @foreach ($varian->where('id',$poproduksinya->id_varian) as $item)
                                         <a href="{{route('poproduksi.show',$data_quantityProduction->id_product)}}"> {{$item->kode_variant }} {{$item->ukuran}}</a>
                                     @endforeach    
-                                @endforeach</td>
+                                @endforeach
+                            </td>
                             <td>{{ $data_quantityProduction->reject_defect }}</td>
                             <td>{{ $data_quantityProduction->sample }}</td>
                             <td>{{ $data_quantityProduction->reject_defect_hci }}</td>
-                            <td>0</td>
+                            <td>
+                                {{ $finish_good }}
+                            </td>
                             <td>
                                 <?php
                                     $total = $data_quantityProduction->reject_defect + $data_quantityProduction->sample + $data_quantityProduction->reject_defect_hci;
