@@ -38,21 +38,6 @@ class varianController extends Controller
     public function store(Request $request)
     {
         DB::insert('insert into tbl_varian (
-<<<<<<< HEAD
-            id_customer, 
-            nama_variant, 
-            ukuran,
-            kode_variant,
-            tampilkan
-            ) values (?, ?,?,?,?)', [
-                '1',
-                $request->nama_variant,
-                $request->ukuran,
-                $request->kode_variant,
-                '1'
-            ]);
-        return redirect()->route('varian.index');
-=======
             id_customer,
             nama_variant,
             kode_variant,
@@ -64,7 +49,6 @@ class varianController extends Controller
             $request->ukuran]);
         return redirect()->route('varian.index')
                          ->with('success','Berhasil Disimpan');
->>>>>>> e8cbe477fd6df2888c32fbcc804dd46c12369821
     }
 
     /**
