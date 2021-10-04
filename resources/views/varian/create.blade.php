@@ -11,6 +11,12 @@
                         @csrf
                         <div class="card-body">
                             <div class="row">
+                            <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>id customer</label>
+                                        <input type="number" name="id_customer" class="form-control" required>
+                                    </div>
+                                </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>* Nama Varian</label>

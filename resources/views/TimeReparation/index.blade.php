@@ -2,6 +2,17 @@
 @section('title','Time Reparation')
 
 @section('content')
+
+@if ($message = Session::get('success'))
+    <p> <script>alert('{{ $message }}');</script> </p>
+@endif
+@if ($message = Session::get('delete'))
+    <p> <script>alert('{{ $message }}');</script> </p>
+@endif
+@if ($message = Session::get('update'))
+    <p> <script>alert('{{ $message }}');</script> </p>
+@endif
+
     <div class="card mt-3 p-4 shadow-sm">
         <div class="table-responsive">
             <a href="{{ route('TimeReparation.create') }}" class="btn btn-success">Tambah Data</a>

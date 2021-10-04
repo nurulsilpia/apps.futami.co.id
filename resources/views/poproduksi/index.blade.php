@@ -22,7 +22,7 @@
                                 <th>Catatan</th>
                                 <th width="150px">Action</th>
                             </tr>
-                            @foreach ($poproduksi as $no =>  $item)
+                            @foreach ($poproduksi as $no => $item)
                             
                                 <tr>
                                     <td>{{ $no+1}}</td>

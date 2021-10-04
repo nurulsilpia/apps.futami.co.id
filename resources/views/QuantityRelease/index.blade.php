@@ -3,6 +3,16 @@
 
 @section('content')
 
+@if ($message = Session::get('success'))
+    <p> <script>alert('{{ $message }}');</script> </p>
+@endif
+@if ($message = Session::get('delete'))
+    <p> <script>alert('{{ $message }}');</script> </p>
+@endif
+@if ($message = Session::get('update'))
+    <p> <script>alert('{{ $message }}');</script> </p>
+@endif
+
     <div class="card mt-3 p-4 shadow-sm">
         <div class="table-responsive">
             <a href="{{ route('QuantityRelease.create') }}" class="btn btn-success">Tambah Data</a>
@@ -13,7 +23,8 @@
                     <th>ID Product</th>
                     <th>Reject + Defect Inspeksi</th>
                     <th>Reject + Defect Inspeksi HCI</th>
-                    <th colspan="4">Aksi</th>
+                    <th>QC Finish Good</th>
+                    <th colspan="5">Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -24,6 +35,7 @@
                             <td>{{$data_table->id_product}}</td>
                             <td>{{$data_table->reject_defect_inspeksi}}</td>
                             <td>{{$data_table->reject_defect_inspeksi_hci}}</td>
+                            <td></td>
                             <td><a href="{{route('QuantityRelease.show',$data_table->id_quantity_release_qc)}}" class="btn btn-info">Show</a></td>
                             <td><a href="{{route('QuantityRelease.edit',$data_table->id_quantity_release_qc)}}"  class="btn btn-warning">Edit</a></td>  
                             <td>

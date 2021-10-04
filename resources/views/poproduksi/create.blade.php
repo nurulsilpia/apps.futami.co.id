@@ -46,6 +46,10 @@
                                     </div>
                                 </div>  
                                 <div class="mb-3 col-md-3">
+                                    <label class="form-label fw-bold">Tgl dibuat</label>
+                                    <input type="datetime-local" name="tgl_dibuat" class="form-control" required>
+                                </div>
+                                <div class="mb-3 col-md-3">
                                     <label class="form-label fw-bold">Start Produksi</label>
                                     <input type="datetime-local" name="mulai_produksi" class="form-control" required>
                                 </div>

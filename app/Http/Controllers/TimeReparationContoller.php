@@ -36,6 +36,12 @@ class TimeReparationContoller extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'id_product'=>'required',
+            'start'=>'required',
+            'stop'=>'required',
+        ]);
+        
         DB::insert('insert into tbl_time_reparation (
             id_product,
             start,
@@ -44,7 +50,8 @@ class TimeReparationContoller extends Controller
             $request->id_product,
             $request->start,
             $request->stop]);
-        return redirect()->route('TimeReparation.index');
+        return redirect()->route('TimeReparation.index') 
+                         ->with('success','Berhasil Disimpan');
     }
 
     /**
@@ -81,7 +88,13 @@ class TimeReparationContoller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    { 
+        $request->validate([
+            'id_product'=>'required',
+            'start'=>'required',
+            'stop'=>'required',
+        ]);
+        
         // dd($request);
         DB::table('tbl_time_reparation')
             ->where('id_time_reparation', $id) 
@@ -90,7 +103,8 @@ class TimeReparationContoller extends Controller
                 'start' => $request->start,
                 'stop' => $request->stop
             ]);
-        return redirect()->route('TimeReparation.index');
+        return redirect()->route('TimeReparation.index')
+                        ->with('update','Berhasil Diedit');
     }
 
     /**
@@ -102,6 +116,8 @@ class TimeReparationContoller extends Controller
     public function destroy($id)
     {
         DB::table('tbl_time_reparation')->where('id_time_reparation',$id)->delete();
-        return redirect()->route('TimeReparation.index');
+        return redirect()->route('TimeReparation.index')
+                         ->with('delete','Berhasil dihapus');
     }
 }
+

@@ -25,8 +25,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('varian','\App\Http\Controllers\varianController');
     Route::resource('poproduksi','\App\Http\Controllers\poProduksiController');
 
+<<<<<<< HEAD
     //QuantityRelease
     Route::resource('QuantityRelease','\App\Http\Controllers\QuantityReleaseQcController');
+=======
+//QuantityRelease
+Route::resource('QuantityRelease','\App\Http\Controllers\QuantityReleaseQcController');
+Route::get('/create','QuantityReleaseController@create');
+>>>>>>> e8cbe477fd6df2888c32fbcc804dd46c12369821
 
     //TimeReparation
     Route::resource('TimeReparation','\App\Http\Controllers\TimeReparationContoller');
@@ -35,7 +41,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('QuantityProduction/detail/{id}','\App\Http\Controllers\QuantityProductionController@detail')->name('quantity_production_detail');
     Route::resource('QuantityProduction','\App\Http\Controllers\QuantityProductionController');
 
+<<<<<<< HEAD
     //FillingPerfomance
     Route::get('FillingPerfomance/detail/{id}','\App\Http\Controllers\FillingPerfomanceController@detail')->name('filling_detail');
     Route::resource('FillingPerfomance','\App\Http\Controllers\FillingPerfomanceController');
 });
+=======
+//FillingPerfomance
+Route::get('FillingPerfomance/detail/{id}','\App\Http\Controllers\FillingPerfomanceController@detail')->name('filling_detail');
+Route::resource('FillingPerfomance','\App\Http\Controllers\FillingPerfomanceController');
+
+
+>>>>>>> e8cbe477fd6df2888c32fbcc804dd46c12369821

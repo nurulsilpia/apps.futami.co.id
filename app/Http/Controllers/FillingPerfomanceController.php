@@ -22,18 +22,23 @@ class FillingPerfomanceController extends Controller
             id_product,
             SUM(counter_filling) counter_filling, 
             COUNT(counter_filling) total_batch,
+<<<<<<< HEAD
             TIMESTAMPDIFF(MINUTE,MIN (start_filling),max(stop_filling))
+=======
+            TIMESTAMPDIFF(MINUTE,MIN(start_filling),max(stop_filling)) pfr
+>>>>>>> e8cbe477fd6df2888c32fbcc804dd46c12369821
            FROM 
             tbl_filling_perfomance
            GROUP BY
             id_product'
         );
+    
 
         // dd($data_index);
 
         $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
         $varian = DB::table('tbl_varian')->get();
-          
+
         return view('FillingPerfomance.index',[
             'data_index'=>$data_index,
             'poproduksi'=>$poproduksi,
@@ -46,12 +51,7 @@ class FillingPerfomanceController extends Controller
         $data_index = DB::table('tbl_filling_perfomance')->where('id_product',$id)->get();
         return view('FillingPerfomance.detail',['data_index'=>$data_index]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         return view('FillingPerfomance.create-data');
@@ -64,7 +64,13 @@ class FillingPerfomanceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   $request->validate([
+        'id_product'=>'required',
+        'no_batch'=>'required',
+        'start_filling'=>'required',
+        'stop_filling'=>'required',
+        'counter_filling'=>'required',
+    ]);
         DB::insert('insert into tbl_filling_perfomance (
             id_product, no_batch, start_filling, stop_filling, counter_filling)
             values (?,?,?,?,?)',[
@@ -74,18 +80,8 @@ class FillingPerfomanceController extends Controller
                 $request->stop_filling,
                 $request->counter_filling
             ]);
-            return redirect()->route('FillingPerfomance.index');
-
-        // $model = new FillingPerfomance;
-        // $model->id_product = $request->id_product;
-        // $model->no_batch = $request->no_batch;
-        // $model->start_filling = $request->start_filling;
-        // $model->stop_filling = $request->stop_filling;
-        // $model->counter_filling = $request->counter_filling;
-        // $model->save();
-
-        // return redirect('index');
-
+            return redirect()->route('FillingPerfomance.index')
+                            ->with('success','Created successfully');
     }
 
     /**
@@ -132,7 +128,8 @@ class FillingPerfomanceController extends Controller
                 'stop_filling' => $request->stop_filling,
                 'counter_filling'=> $request->counter_filling
             ]);
-        return redirect()->route('FillingPerfomance.index');
+        return redirect()->route('FillingPerfomance.index')
+                         ->with('success','Edited successfully');
     }
 
     /**
@@ -144,6 +141,7 @@ class FillingPerfomanceController extends Controller
     public function destroy($id)
     {
         DB::table('tbl_filling_perfomance')->where('id_filling_perfomance',$id)->delete();
-        return redirect()->route('FillingPerfomance.index');
+        return redirect()->route('FillingPerfomance.index')
+                        ->with('success','Deleted successfully');
     }
 }

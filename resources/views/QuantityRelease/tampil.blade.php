@@ -13,6 +13,7 @@
                     <th>ID Product</th>
                     <th>Reject + Defect Inspeksi</th>
                     <th>Reject + Defect Inspeksi HCI</th>
+                    <th>QC Finish Good</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -24,6 +25,7 @@
                             <td>{{$data_table->id_product}}</td>
                             <td>{{$data_table->reject_defect_inspeksi}}</td>
                             <td>{{$data_table->reject_defect_inspeksi_hci}}</td>
+                            <td></td>
                         </tr>
                 @endforeach
                 

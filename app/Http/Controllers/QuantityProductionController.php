@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 
@@ -18,10 +18,12 @@ class quantityProductionController extends Controller
         $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
         $varian = DB::table('tbl_varian')->get();
         $data_quantityProduction = DB::table('tbl_quantity_production')->get();
+        $finish_good = DB::table('tbl_filling_perfomance')->sum('counter_filling');
         return view('QuantityProduction.index',[
             'data_quantityProduction'=> $data_quantityProduction,
             'poproduksi'=>$poproduksi,
-            'varian'=>$varian
+            'varian'=>$varian,
+            'finish_good'=>$finish_good
             ]);
     }
 
@@ -51,20 +53,26 @@ class quantityProductionController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'id_product'=>'required',
+            'reject_defect'=>'required',
+            'sample'=>'required',
+            'reject_defect_hci'=>'required'
+        ]);
+
         DB::insert('insert into tbl_quantity_production (
             id_product,
             reject_defect,
             sample,
-            reject_defect_hci,
-            production_finish_good) 
-            values (?,?,?,?,?)', [
+            reject_defect_hci) 
+            values (?,?,?,?)', [
             $request->id_product,
             $request->reject_defect,
             $request->sample,
-            $request->reject_defect_hci,
-            $request->production_finish_good
+            $request->reject_defect_hci
             ]);
-        return redirect()->route('QuantityProduction.index');
+        return redirect()->route('QuantityProduction.index')
+                         ->with('success','Data Berhasil Disimpan');
     }
 
     /**
@@ -101,6 +109,13 @@ class quantityProductionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'id_product'=>'required',
+            'reject_defect'=>'required',
+            'sample'=>'required',
+            'reject_defect_hci'=>'required'
+        ]);
+
         DB::table('tbl_quantity_production')
             ->where('id_quantity_production', $id) 
             ->update([
@@ -109,7 +124,8 @@ class quantityProductionController extends Controller
                 'sample' => $request->sample,
                 'reject_defect_hci' => $request->reject_defect_hci
             ]);
-        return redirect()->route('QuantityProduction.index');
+        return redirect()->route('QuantityProduction.index')
+                         ->with('update','Data Berhasil Diedit');
     }
 
     /**
@@ -121,6 +137,7 @@ class quantityProductionController extends Controller
     public function destroy($id)
     {
         DB::table('tbl_quantity_production')->where('id_quantity_production',$id)->delete();
-        return redirect()->route('QuantityProduction.index');
+        return redirect()->route('QuantityProduction.index')
+                         ->with('delete','Data Berhasil Dihapus');
     }
 }

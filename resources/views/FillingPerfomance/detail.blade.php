@@ -35,7 +35,7 @@
                     <td>{{$data_index->counter_filling}}</td>
                     <td>{{number_format(22800,0,'','.')}}</td>
                     <td>{{number_format($data_index->counter_filling/(22800/60),0,'','.')}}</td>
-                    <td> {{number_format((($data_index->counter_filling / ($time/60))/22800)*100,2,',','')}}% </td>
+                    <td>{{number_format((($data_index->counter_filling / ($time/60))/22800)*100,2,',','')}}% </td>
                     
                     <td>
                         <a class="btn btn-warning" href="{{route('FillingPerfomance.edit',$data_index->id_filling_perfomance)}}">Show</a> 

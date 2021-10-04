@@ -14,23 +14,31 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label fw-bold">ID Product</label>
-                            <input type="number" name="id_product" class="form-control" placeholder="Masukan ID Product" value="{{ $data_test->id_product }}" required>
+                            <input type="number" name="id_product" class="form-control" placeholder="Masukan ID Product" value="{{ $data_test->id_product }}" value="{{ old('id_product') }}">
+                            @error('id_product')
+                                <div class="alert alert-danger">{{$message="ID Product harus di isi"}}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-bold">Reject + Defect</label>
-                            <input type="number" name="reject_defect" class="form-control" placeholder="Masukan Jumlah Data" value="{{ $data_test->reject_defect }}" required>
+                            <input type="number" name="reject_defect" class="form-control" placeholder="Masukan Jumlah Data" value="{{ $data_test->reject_defect }}" value="{{ old('reject_defect') }}">
+                            @error('reject_defect')
+                                <div class="alert alert-danger">{{$message="Reject + Defect harus di isi"}}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-bold">Sample</label>
-                            <input type="number" name="sample" class="form-control" placeholder="Masukan Jumlah Sample" value="{{ $data_test->sample }}" required>
+                            <input type="number" name="sample" class="form-control" placeholder="Masukan Jumlah Sample" value="{{ $data_test->sample }}" value="{{ old('sample') }}">
+                            @error('sample')
+                                <div class="alert alert-danger">{{$message="Sample harus di isi"}}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label class="form-label fw-bold">Reject + Defect HCI</label>
-                            <input type="number" name="reject_defect_hci" class="form-control" placeholder="Masukan Jumlah Data" value="{{ $data_test->reject_defect_hci }}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Production Finish Good</label>
-                            <input type="number" name="" class="form-control" placeholder="-" value="" disabled readonly>
+                            <input type="number" name="reject_defect_hci" class="form-control" placeholder="Masukan Jumlah Data" value="{{ $data_test->reject_defect_hci }}" value="{{ old('reject_defect_hci') }}">
+                            @error('reject_defect_hci')
+                                <div class="alert alert-danger">{{$message="Reject + Defect HCI harus di isi"}}</div>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-primary" onclick="return confirm('Simpan Data?')">Simpan Data</button>
                 </div>

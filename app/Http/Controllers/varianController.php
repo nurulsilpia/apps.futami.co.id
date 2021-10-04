@@ -38,6 +38,7 @@ class varianController extends Controller
     public function store(Request $request)
     {
         DB::insert('insert into tbl_varian (
+<<<<<<< HEAD
             id_customer, 
             nama_variant, 
             ukuran,
@@ -51,6 +52,19 @@ class varianController extends Controller
                 '1'
             ]);
         return redirect()->route('varian.index');
+=======
+            id_customer,
+            nama_variant,
+            kode_variant,
+            ukuran)
+            values (?,?,?,?)', [
+            $request->id_customer,
+            $request->nama_variant,
+            $request->kode_variant,
+            $request->ukuran]);
+        return redirect()->route('varian.index')
+                         ->with('success','Berhasil Disimpan');
+>>>>>>> e8cbe477fd6df2888c32fbcc804dd46c12369821
     }
 
     /**
@@ -74,7 +88,7 @@ class varianController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -104,11 +118,17 @@ class varianController extends Controller
      */
     public function destroy($id)
     {
+<<<<<<< HEAD
         // dd($id);
         DB::table('tbl_varian')
         ->where('id', $id)
         ->update(['tampilkan' => 0]);
         // DB::table('ketentuan_klaim')->where('id','=', $id)->delete();
         return  redirect()->back();
+=======
+        DB::table('tbl_varian')->where('id',$id)->delete();
+        return redirect()->route('varian.index')
+                         ->with('delete','Berhasil dihapus');
+>>>>>>> e8cbe477fd6df2888c32fbcc804dd46c12369821
     }
 }

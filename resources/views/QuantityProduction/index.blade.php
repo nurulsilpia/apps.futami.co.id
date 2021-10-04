@@ -2,6 +2,16 @@
 @section('title','Quantity Production')
 
 @section('content')
+
+@if ($message = Session::get('success'))
+    <p> <script>alert('{{ $message }}');</script> </p>
+@endif
+@if ($message = Session::get('delete'))
+    <p> <script>alert('{{ $message }}');</script> </p>
+@endif
+@if ($message = Session::get('update'))
+    <p> <script>alert('{{ $message }}');</script> </p>
+@endif
     
     <div class="card mt-3 p-4 shadow-sm">
         <div class="table-responsive">
@@ -10,7 +20,7 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>ID Product</th>
+                    <th>Varian</th>
                     <th>Reject + Defect</th>
                     <th>Sample</th>
                     <th>Reject + Defect HCI</th>
@@ -22,19 +32,27 @@
                 <tbody>
 
                     @foreach($data_quantityProduction as $no => $data_quantityProduction)
-                        <tr>
+                        <tr> 
                             <th scope="row">{{ $no + 1 }}</th>
                             <td>
                                 @foreach ($poproduksi->where('id',$data_quantityProduction->id_product) as $poproduksinya)
                                     @foreach ($varian->where('id',$poproduksinya->id_varian) as $item)
                                         <a href="{{route('poproduksi.show',$data_quantityProduction->id_product)}}"> {{$item->kode_variant }} {{$item->ukuran}}</a>
                                     @endforeach    
-                                @endforeach</td>
+                                @endforeach
+                            </td>
                             <td>{{ $data_quantityProduction->reject_defect }}</td>
                             <td>{{ $data_quantityProduction->sample }}</td>
                             <td>{{ $data_quantityProduction->reject_defect_hci }}</td>
-                            <td>0</td>
-                            <td></td>
+                            <td>
+                                {{ $finish_good }}
+                            </td>
+                            <td>
+                                <?php
+                                    $total = $data_quantityProduction->reject_defect + $data_quantityProduction->sample + $data_quantityProduction->reject_defect_hci + $finish_good;
+                                    echo "$total";
+                                ?>
+                            </td>
                             
                             <td>
                                 <a class="btn btn-warning" href="{{route('QuantityProduction.edit',$data_quantityProduction->id_quantity_production)}}">Edit</a> 

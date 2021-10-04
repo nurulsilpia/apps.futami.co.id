@@ -36,15 +36,24 @@ class QuantityReleaseQcController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'id_product'=>'required',
+            'reject_defect_inspeksi'=>'required',
+            'reject_defect_inspeksi_hci'=>'required',
+        ]); 
+        
         DB::insert('insert into tbl_quantity_release_qc (
             id_product,
             reject_defect_inspeksi,
-            reject_defect_inspeksi_hci) 
-            values (?,?,?)', [
+            reject_defect_inspeksi_hci,
+            qc_finish_good) 
+            values (?,?,?,?)', [
             $request->id_product,
             $request->reject_defect_inspeksi,
-            $request->reject_defect_inspeksi_hci]);
-        return redirect()->route('QuantityRelease.index');
+            $request->reject_defect_inspeksi_hci
+            ]);
+        return redirect()->route('QuantityRelease.index')
+                         ->with('success','Data Berhasil Disimpan');
     }
 
     /**
@@ -82,6 +91,12 @@ class QuantityReleaseQcController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'id_product'=>'required',
+            'reject_defect_inspeksi'=>'required',
+            'reject_defect_inspeksi_hci'=>'required',
+        ]); 
+
         // dd($request);
         DB::table('tbl_quantity_release_qc')
             ->where('id_quantity_release_qc', $id) 
@@ -90,7 +105,8 @@ class QuantityReleaseQcController extends Controller
                 'reject_defect_inspeksi' => $request->reject_defect_inspeksi,
                 'reject_defect_inspeksi_hci' => $request->reject_defect_inspeksi_hci
             ]);
-        return redirect()->route('QuantityRelease.index');
+        return redirect()->route('QuantityRelease.index')
+                         ->with('update','Berhasil Diedit');
     }
 
     /**
@@ -102,6 +118,7 @@ class QuantityReleaseQcController extends Controller
     public function destroy($id)
     {
         DB::table('tbl_quantity_release_qc')->where('id_quantity_release_qc',$id)->delete();
-        return redirect()->route('QuantityRelease.index');
+        return redirect()->route('QuantityRelease.index')
+                         ->with('delete','Berhasil dihapus');
     }
 }
