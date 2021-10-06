@@ -21,14 +21,14 @@
                 </div>
                 <div class="mb-3 col-md-3">
                     <label class="form-label fw-bold">Start</label>
-                    <input type="datetime-local" name="start" class="form-control @error('start') is invalid @enderror" placeholder="Masuk waktu Start" value="{{ $data_table->start }}" value="{{old('start')}}">
+                    <input type="datetime-local" name="start" class="form-control @error('start') is invalid @enderror" placeholder="Masuk waktu Start" value="{{ date('Y-m-d\TH:i', strtotime( $data_table->start)) }}" value="{{old('start')}}">
                     @error('start')
                         <div class="alert alert-danger">{{$message="waktu start harus di isi"}}</div>
                     @enderror
                 </div>
                 <div class="mb-3 col-md-3">
                     <label class="form-label fw-bold">Stop</label>
-                    <input type="datetime-local" name="stop" class="form-control  @error('stop') is invalid @enderror" placeholder="Masukan Waktu Stop" value="{{ $data_table->stop }}" value="{{old('stop')}}">
+                    <input type="datetime-local" name="stop" class="form-control  @error('stop') is invalid @enderror" placeholder="Masukan Waktu Stop" value="{{ date('Y-m-d\TH:i', strtotime( $data_table->stop)) }}" value="{{old('stop')}}">
                     @error('stop')
                         <div class="alert alert-danger">{{$message="waktu stop harus di isi"}}</div>
                     @enderror

@@ -22,11 +22,11 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-bold">Start Filling</label>
-                        <input type="datetime-local" name="start_filling" class="form-control" value="{{$data_index->start_filling}}" required>
+                        <input type="datetime-local" name="start_filling" class="form-control" value="{{ date('Y-m-d\TH:i', strtotime($data_index->start_filling)) }}" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-bold">Stop Filling</label>
-                        <input type="datetime-local" name="stop_filling" class="form-control" value="{{$data_index->stop_filling}}" required>
+                        <input type="datetime-local" name="stop_filling" class="form-control" value="{{ date('Y-m-d\TH:i', strtotime($data_index->stop_filling)) }}" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-bold">Counter Filling</label>

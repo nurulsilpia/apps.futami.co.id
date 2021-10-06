@@ -54,13 +54,13 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="text-uppercase">Mulai</label><br>
-                            <input type="datetime-local" name="mulai_downtime" class="form-control" placeholder="Masukan waktu mulai" value="{{ $item->mulai_downtime }}" required>
+                            <input type="datetime-local" name="mulai_downtime" class="form-control" placeholder="Masukan waktu mulai" value="{{ date('Y-m-d\TH:i', strtotime($item->mulai_downtime)) }}" required>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="text-uppercase">Selesai</label><br>
-                            <input type="datetime-local" name="selesai_downtime" class="form-control" placeholder="Masukan waktu selesai" value="{{ $item->selesai_downtime }}" required>
+                            <input type="datetime-local" name="selesai_downtime" class="form-control" placeholder="Masukan waktu selesai" value="{{ date('Y-m-d\TH:i', strtotime($item->mulai_downtime)) }}" required>
                         </div>
                     </div>
 
