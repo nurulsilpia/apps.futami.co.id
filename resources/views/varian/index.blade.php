@@ -16,7 +16,7 @@
                                 <th>varian</th>
                                 <th>Kode</th>
                                 <th>Ukuran</th>
-                                <th width="150px">Action</th>
+                                <th width="140px">Action</th>
                             </tr>
                             @foreach ($data_varian as $no =>  $item)
                             
@@ -24,10 +24,9 @@
                                     <td>{{ $no+1}}</td>
                                     <td>{{ $item->nama_variant}}</td>
                                     <td>{{ $item->kode_variant}}</td>
-                                    <td>{{ $item->ukuran}}</td>
-                                    <td> 
+                                    <td>{{ $item->ukuran}} ML</td>
+                                    <td>
                                         <form action="{{ route('varian.destroy',$item->id) }}" method="POST">
-                                    @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger" type="submit" onclick="return confirm('Hapus Data?')">Delete</button>
                                 </form>
@@ -36,7 +35,6 @@
                                 </tr>
                                 @endforeach
                         </table>
-                    </div>
                     </div>
 
                 </div>

@@ -2,27 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-// Route::resource('products','ProductController');
-
 Route::resource('test','\App\Http\Controllers\test');
-//          Nama route, nama controller
-
-Route::resource('downtime','\App\Http\Controllers\downtime\downtimeController');
-Route::resource('varian','\App\Http\Controllers\varianController');
-Route::resource('poproduksi','\App\Http\Controllers\poProduksiController');
 
 // login
-// Route::get('/coincalc', 'test@coincalc' )-> name('coincalc') ;
 Route::get('/login', 'otentikasi\OtentikasiController@index' )-> name('login') ;
 Route::post('/login', 'otentikasi\OtentikasiController@login') -> name('login');
 Route::get('/logout', 'otentikasi\OtentikasiController@logout') -> name('logout');
@@ -38,21 +20,23 @@ Route::group(['middleware' => 'auth'], function () {
     //profile user
     Route::get('/profile', 'otentikasi\OtentikasiController@profile' )-> name('profile') ;
     Route::post('/profile/simpan', 'otentikasi\OtentikasiController@profilesimpan') -> name('profile-user-simpan');
+    
+    Route::resource('downtime','\App\Http\Controllers\downtime\downtimeController');
+    Route::resource('varian','\App\Http\Controllers\varianController');
+    Route::resource('poproduksi','\App\Http\Controllers\poProduksiController');
+
+    //QuantityRelease
+    Route::resource('QuantityRelease','\App\Http\Controllers\QuantityReleaseQcController');
+
+    //TimeReparation
+    Route::resource('TimeReparation','\App\Http\Controllers\TimeReparationContoller');
+
+    // QuantityProduction
+    Route::get('QuantityProduction/detail/{id}','\App\Http\Controllers\QuantityProductionController@detail')->name('quantity_production_detail');
+    Route::resource('QuantityProduction','\App\Http\Controllers\QuantityProductionController');
+
+    //FillingPerfomance
+    Route::get('FillingPerfomance/detail/{id}','\App\Http\Controllers\FillingPerfomanceController@detail')->name('filling_detail');
+    Route::resource('FillingPerfomance','\App\Http\Controllers\FillingPerfomanceController');
+
 });
-
-//QuantityRelease
-Route::resource('QuantityRelease','\App\Http\Controllers\QuantityReleaseQcController');
-Route::get('/create','QuantityReleaseController@create');
-
-//TimeReparation
-Route::resource('TimeReparation','\App\Http\Controllers\TimeReparationContoller');
-
-// QuantityProduction
-Route::get('QuantityProduction/detail/{id}','\App\Http\Controllers\QuantityProductionController@detail')->name('quantity_production_detail');
-Route::resource('QuantityProduction','\App\Http\Controllers\QuantityProductionController');
-
-//FillingPerfomance
-Route::get('FillingPerfomance/detail/{id}','\App\Http\Controllers\FillingPerfomanceController@detail')->name('filling_detail');
-Route::resource('FillingPerfomance','\App\Http\Controllers\FillingPerfomanceController');
-
-

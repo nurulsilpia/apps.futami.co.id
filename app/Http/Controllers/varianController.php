@@ -15,7 +15,7 @@ class varianController extends Controller
      */
     public function index()
     {
-        $data_varian = DB::table('tbl_varian')->get();
+        $data_varian = DB::table('tbl_varian')->where('tampilkan',1)->get();
         return view('varian.index',['data_varian'=>$data_varian]);
     }
 
@@ -59,7 +59,9 @@ class varianController extends Controller
      */
     public function show($id)
     {
-        //
+        $data_varian = DB::table('tbl_varian')->where('id',$id)->first();
+        // dd($data_varian);
+        return view('varian.show',['item'=>$data_varian]);
     }
 
     /**
@@ -82,7 +84,14 @@ class varianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('tbl_varian')
+        ->where('id', $id)
+        ->update([
+            'nama_variant' => $request->nama_variant,
+            'kode_variant' => $request->kode_variant,
+            'ukuran' => $request->ukuran,
+            ]);
+        return  redirect()->route('varian.index');
     }
 
     /**

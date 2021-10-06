@@ -16,12 +16,17 @@ class FillingPerfomanceController extends Controller
      */
     public function index()
     {
+        //SELECT kode_produksi, min(mulai), max(stop), timestampdiff(minute,min(mulai), max(stop)) menit, count(kode_produksi) total_batch FROM `tbl_filling_performance` group by kode_produksi
         $data_index = DB::select(
           'SELECT 
             id_product,
             SUM(counter_filling) counter_filling, 
             COUNT(counter_filling) total_batch,
+<<<<<<< HEAD
+            TIMESTAMPDIFF(MINUTE,MIN (start_filling),max(stop_filling))
+=======
             TIMESTAMPDIFF(MINUTE,MIN(start_filling),max(stop_filling)) pfr
+>>>>>>> e8cbe477fd6df2888c32fbcc804dd46c12369821
            FROM 
             tbl_filling_perfomance
            GROUP BY
