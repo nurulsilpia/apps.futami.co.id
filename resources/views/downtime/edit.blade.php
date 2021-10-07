@@ -60,7 +60,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="text-uppercase">Selesai</label><br>
-                            <input type="datetime-local" name="selesai_downtime" class="form-control" placeholder="Masukan waktu selesai" value="{{ date('Y-m-d\TH:i', strtotime($item->mulai_downtime)) }}" required>
+                            <input type="datetime-local" name="selesai_downtime" class="form-control" placeholder="Masukan waktu selesai" value="{{ date('Y-m-d\TH:i', strtotime($item->selesai_downtime)) }}" required>
                         </div>
                     </div>
 

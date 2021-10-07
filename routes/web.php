@@ -14,9 +14,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('/home');
     })->name('home');
     
-    // tambah user
-    Route::get('/tambahuser', 'otentikasi\OtentikasiController@tambah' )-> name('tambah-user') ;
-    Route::post('/tambahuser/simpan', 'otentikasi\OtentikasiController@simpan') -> name('tambah-user-simpan');
+    
     //profile user
     Route::get('/profile', 'otentikasi\OtentikasiController@profile' )-> name('profile') ;
     Route::post('/profile/simpan', 'otentikasi\OtentikasiController@profilesimpan') -> name('profile-user-simpan');
@@ -25,18 +23,22 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('varian','\App\Http\Controllers\varianController');
     Route::resource('poproduksi','\App\Http\Controllers\poProduksiController');
 
-    //QuantityRelease
-    Route::resource('QuantityRelease','\App\Http\Controllers\QuantityReleaseQcController');
-
-    //TimeReparation
-    Route::resource('TimeReparation','\App\Http\Controllers\TimeReparationContoller');
-
-    // QuantityProduction
-    Route::get('QuantityProduction/detail/{id}','\App\Http\Controllers\QuantityProductionController@detail')->name('quantity_production_detail');
-    Route::resource('QuantityProduction','\App\Http\Controllers\QuantityProductionController');
-
-    //FillingPerfomance
-    Route::get('FillingPerfomance/detail/{id}','\App\Http\Controllers\FillingPerfomanceController@detail')->name('filling_detail');
-    Route::resource('FillingPerfomance','\App\Http\Controllers\FillingPerfomanceController');
-
+   
 });
+// tambah user
+Route::get('/tambahuser', 'otentikasi\OtentikasiController@tambah' )-> name('tambah-user') ;
+Route::post('/tambahuser/simpan', 'otentikasi\OtentikasiController@simpan') -> name('tambah-user-simpan');
+
+ //QuantityRelease
+ Route::resource('QuantityRelease','\App\Http\Controllers\QuantityReleaseQcController');
+
+ //TimeReparation
+ Route::resource('TimeReparation','\App\Http\Controllers\TimeReparationContoller');
+
+ // QuantityProduction
+ Route::get('QuantityProduction/detail/{id}','\App\Http\Controllers\QuantityProductionController@detail')->name('quantity_production_detail');
+ Route::resource('QuantityProduction','\App\Http\Controllers\QuantityProductionController');
+
+ //FillingPerfomance
+ Route::get('FillingPerfomance/detail/{id}','\App\Http\Controllers\FillingPerfomanceController@detail')->name('filling_detail');
+ Route::resource('FillingPerfomance','\App\Http\Controllers\FillingPerfomanceController');

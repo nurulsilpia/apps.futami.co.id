@@ -22,11 +22,7 @@ class FillingPerfomanceController extends Controller
             id_product,
             SUM(counter_filling) counter_filling, 
             COUNT(counter_filling) total_batch,
-<<<<<<< HEAD
-            TIMESTAMPDIFF(MINUTE,MIN (start_filling),max(stop_filling))
-=======
             TIMESTAMPDIFF(MINUTE,MIN(start_filling),max(stop_filling)) pfr
->>>>>>> e8cbe477fd6df2888c32fbcc804dd46c12369821
            FROM 
             tbl_filling_perfomance
            GROUP BY
