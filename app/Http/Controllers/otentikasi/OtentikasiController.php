@@ -43,7 +43,7 @@ class OtentikasiController extends Controller
                 'remember_token' => $request->_token
             )
         );
-        return redirect()->back();
+        return redirect('/login');
     }
     public function profile(){
         $id_user = session()->get('id_user');
