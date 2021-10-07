@@ -6,3 +6,13 @@
  */
 
 /*# sourceMappingURL=custom.css.map */
+
+/* show password */
+.toggle-password {
+    float: right;
+    margin-left: -25px;
+    padding-right: 25px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+}

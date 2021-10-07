@@ -14,9 +14,6 @@ Route::group(['middleware' => 'auth'], function () {
         return view('/home');
     })->name('home');
     
-    // tambah user
-    Route::get('/tambahuser', 'otentikasi\OtentikasiController@tambah' )-> name('tambah-user') ;
-    Route::post('/tambahuser/simpan', 'otentikasi\OtentikasiController@simpan') -> name('tambah-user-simpan');
     //profile user
     Route::get('/profile', 'otentikasi\OtentikasiController@profile' )-> name('profile') ;
     Route::post('/profile/simpan', 'otentikasi\OtentikasiController@profilesimpan') -> name('profile-user-simpan');
@@ -40,3 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('FillingPerfomance','\App\Http\Controllers\FillingPerfomanceController');
 
 });
+
+// tambah user
+Route::get('/tambahuser', 'otentikasi\OtentikasiController@tambah' )-> name('tambah-user') ;
+Route::post('/tambahuser/simpan', 'otentikasi\OtentikasiController@simpan') -> name('tambah-user-simpan');

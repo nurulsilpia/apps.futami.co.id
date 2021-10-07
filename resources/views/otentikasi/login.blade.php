@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('assets/css/all.css') }}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
   
     {{-- CSS Libraries --}}
     @yield('page-styles')
@@ -50,6 +51,7 @@
                      
                     </div>
                     <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+                    <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     <div class="invalid-feedback">
                       please fill in your password
                     </div>
@@ -62,6 +64,7 @@
                       Login
                     </button>
                   </div>
+                  <p class="text-center">Belum Punya Akun?<a href="{{ url('/tambahuser') }}"> Daftar</a></p> 
                 </form>
                 
               </div>

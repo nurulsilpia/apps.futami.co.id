@@ -24,6 +24,12 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label>* Email</label>
+                                        <input type="text" placeholder="Input Nama" name="email" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         <label>* Departemen</label><br>
                                         <select class="form-control" name="departement" id="departement">
                                             <option value="">--Pilih Departement--</option> 
