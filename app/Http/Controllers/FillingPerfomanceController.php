@@ -67,6 +67,11 @@ class FillingPerfomanceController extends Controller
         'stop_filling'=>'required',
         'counter_filling'=>'required',
     ]);
+   
+    if (strtotime($request->stop_filling)<=strtotime($request->start_filling)) {
+        return redirect()->back()->with('error','stop filling tidak boleh kurang dari start filiing');
+    }
+    
         DB::insert('insert into tbl_filling_perfomance (
             id_product, no_batch, start_filling, stop_filling, counter_filling)
             values (?,?,?,?,?)',[
