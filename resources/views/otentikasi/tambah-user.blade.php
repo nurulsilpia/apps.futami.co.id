@@ -19,19 +19,19 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>* Nama/username</label>
-                                        <input type="text" placeholder="Input Nama" name="name" class="form-control">
+                                        <input type="text" placeholder="Input Nama" name="name" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>* Email</label>
-                                        <input type="text" placeholder="Input email" name="email" class="form-control">
+                                        <input type="text" placeholder="Input email" name="email" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>* Departemen</label><br>
-                                        <select class="form-control" name="departement" id="departement">
+                                        <select class="form-control" name="departement" id="departement" required>
                                             <option value="">--Pilih Departement--</option> 
                                             @foreach ($departement as $departemen_item)
                                             <option value="{{$departemen_item->id}}">{{$departemen_item->departemen}}</option> 

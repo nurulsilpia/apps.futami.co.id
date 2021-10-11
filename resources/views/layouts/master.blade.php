@@ -56,5 +56,6 @@
    <!-- Page Specific JS File  -->
    
   @stack('page-scripts')
+  @yield('chart')
 </body>
 </html>

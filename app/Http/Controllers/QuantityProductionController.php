@@ -18,7 +18,12 @@ class quantityProductionController extends Controller
         $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
         $varian = DB::table('tbl_varian')->get();
         $data_quantityProduction = DB::table('tbl_quantity_production')->get();
-        $finish_good = DB::table('tbl_filling_perfomance')->sum('counter_filling');
+        $finish_good = collect( DB::table('tbl_filling_perfomance')->get())
+        ->mapToGroups(function ($item, $key) {
+            return [$item->id_product => $item->counter_filling];
+        });
+
+        // dd($finish_good[5]->sum()??0);
         return view('QuantityProduction.index',[
             'data_quantityProduction'=> $data_quantityProduction,
             'poproduksi'=>$poproduksi,

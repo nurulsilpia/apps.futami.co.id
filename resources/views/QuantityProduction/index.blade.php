@@ -45,11 +45,23 @@
                             <td>{{ $data_quantityProduction->sample }}</td>
                             <td>{{ $data_quantityProduction->reject_defect_hci }}</td>
                             <td>
-                                {{ $finish_good }}
+                                @if (isset($finish_good[$data_quantityProduction->id_product]))
+                                    {{ $finish_good[$data_quantityProduction->id_product]->sum() ?? 0 }}
+                                @else
+                                    0
+                                @endif
+                                
                             </td>
                             <td>
                                 <?php
-                                    $total = $data_quantityProduction->reject_defect + $data_quantityProduction->sample + $data_quantityProduction->reject_defect_hci + $finish_good;
+                                if (isset($finish_good[$data_quantityProduction->id_product])) {
+                                    $finish_good_quantity = $finish_good[$data_quantityProduction->id_product]->sum();
+                                } else {
+                                    $finish_good_quantity = 0;
+                                }
+                                
+                                    
+                                    $total = $data_quantityProduction->reject_defect + $data_quantityProduction->sample + $data_quantityProduction->reject_defect_hci + $finish_good_quantity;
                                     echo "$total";
                                 ?>
                             </td>
