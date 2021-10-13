@@ -20,7 +20,6 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>ID Time Reparation</th>
                     <th>ID Product</th>
                     <th>Start</th>
                     <th>Stop</th>
@@ -33,7 +32,6 @@
                 @foreach($data_table as $no => $data_table)
                         <tr>
                             <th scope="row">{{ $no + 1 }}</th>
-                            <td>{{$data_table->id_time_reparation}}</td>
                             <td>{{$data_table->id_product}}</td>
                             <td>{{$data_table->start}}</td>
                             <td>{{$data_table->stop}}</td>

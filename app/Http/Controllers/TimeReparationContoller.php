@@ -36,22 +36,26 @@ class TimeReparationContoller extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+            $request->validate([
             'id_product'=>'required',
             'start'=>'required',
             'stop'=>'required',
         ]);
+
+        if (strtotime($request->stop)<=strtotime($request->start)) {
+            return redirect()->back()->with('error','stop preparation tidak boleh kurang dari start preparation');
+        }
         
-        DB::insert('insert into tbl_time_reparation (
-            id_product,
-            start,
-            stop) 
-            values (?,?,?)', [
-            $request->id_product,
-            $request->start,
-            $request->stop]);
-        return redirect()->route('TimeReparation.index') 
-                         ->with('success','Berhasil Disimpan');
+            DB::insert('insert into tbl_time_reparation (
+                id_product,
+                start,
+                stop) 
+                values (?,?,?)', [
+                $request->id_product,
+                $request->start,
+                $request->stop]);
+            return redirect()->route('TimeReparation.index') 
+                            ->with('success','Berhasil Disimpan');
     }
 
     /**

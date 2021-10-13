@@ -7,6 +7,9 @@
         <div class="card-body">
             <form action="{{ route('TimeReparation.store') }}" method="POST" class="mx-3">
                 @csrf
+                @if(Session::has('error'))
+                    <div class="alert alert-danger">{{Session::get('error')}}</div>
+                @endif
                 <div class="mb-3 col-md-12">
                     <label class="form-label fw-bold">ID Product</label>
                     <input type="number" name="id_product" class="form-control @error('id_product') is invalid @enderror" placeholder="Masukan ID Product" value="{{old('id_product')}}">
