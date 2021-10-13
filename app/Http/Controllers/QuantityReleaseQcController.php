@@ -15,7 +15,17 @@ class QuantityReleaseQcController extends Controller
     public function index()
     {
         $data_table = DB::table('tbl_quantity_release_qc')->get();
-        return view ('QuantityRelease.index', ['data_table'=> $data_table]);
+        $finish_good = collect( DB::table('tbl_filling_perfomance')->get())
+        ->mapToGroups(function ($item, $key) {
+            return [$item->id_product => $item->counter_filling];
+        });
+
+        // dd($finish_good);
+        return view('QuantityRelease.index',[
+            'data_table'=> $data_table,
+            'finish_good'=>$finish_good
+            ]);
+
     }
 
     /**
@@ -45,9 +55,8 @@ class QuantityReleaseQcController extends Controller
             DB::insert('insert into tbl_quantity_release_qc (
                 id_product,
                 reject_defect_inspeksi,
-                reject_defect_inspeksi_hci,
-                qc_finish_good) 
-                values (?,?,?,?)', [
+                reject_defect_inspeksi_hci) 
+                values (?,?,?)', [
                 $request->id_product,
                 $request->reject_defect_inspeksi,
                 $request->reject_defect_inspeksi_hci

@@ -13,6 +13,7 @@
     <p> <script>alert('{{ $message }}');</script> </p>
 @endif
 
+    <!-- @dump(get_defined_vars()) -->
     <div class="card mt-3 p-4 shadow-sm">
         <div class="table-responsive">
             <a href="{{ route('QuantityRelease.create') }}" class="btn btn-success">Tambah Data</a>
@@ -35,7 +36,20 @@
                             <td>{{$data_table->id_product}}</td>
                             <td>{{$data_table->reject_defect_inspeksi}}</td>
                             <td>{{$data_table->reject_defect_inspeksi_hci}}</td>
-                            <td></td>
+                            <td>
+                            <?php
+                                if (isset($finish_good[$data_table->id_product])) {
+                                    $finish_good_quantity = $finish_good[$data_table->id_product]->sum();
+                                } else {
+                                    $finish_good_quantity = 0;
+                                }
+
+                                // dd($finish_good_quantity,$data_table->reject_defect_inspeksi,$data_table->reject_defect_inspeksi_hci);
+                                $qc_finish_good= $finish_good_quantity - $data_table->reject_defect_inspeksi - $data_table->reject_defect_inspeksi_hci;
+                                echo "$qc_finish_good";
+                            ?>
+                            </td>
+
                             <td><a href="{{route('QuantityRelease.show',$data_table->id_quantity_release_qc)}}" class="btn btn-info">Show</a></td>
                             <td><a href="{{route('QuantityRelease.edit',$data_table->id_quantity_release_qc)}}"  class="btn btn-warning">Edit</a></td>  
                             <td>

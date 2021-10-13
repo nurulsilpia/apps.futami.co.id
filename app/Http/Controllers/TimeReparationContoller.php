@@ -43,7 +43,7 @@ class TimeReparationContoller extends Controller
         ]);
 
         if (strtotime($request->stop)<=strtotime($request->start)) {
-            return redirect()->back()->with('error','stop preparation tidak boleh kurang dari start preparation');
+            return redirect()->back()->with('error','stop reparation tidak boleh kurang dari start reparation');
         }
         
             DB::insert('insert into tbl_time_reparation (
