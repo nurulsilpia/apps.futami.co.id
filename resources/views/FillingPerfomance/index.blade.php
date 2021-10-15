@@ -19,26 +19,27 @@
             </tr>
         </thead>
             <tbody>
-                @foreach ($data_index as $no => $data_index)
+                @foreach ($data_index as $no => $data)
                 <tr>
-                    <td scope="row">{{ $no + 1 }}</td> 
+                    <td scope="row">{{ $loop->iteration }}</td> 
                     <td>
-                    @foreach ($poproduksi->where('id',$data_index->id_product) as $poproduksinya)
-                        @foreach ($varian->where('id',$poproduksinya->id_varian) as $item)
-                            {{$item->kode_variant }} {{$item->ukuran}}
-                        @endforeach    
-                    @endforeach
+                        @foreach ($poproduksi->where('id',$no) as $poproduksinya)
+                            @foreach ($varian->where('id',$poproduksinya->id_varian) as $item)
+                                {{$item->kode_variant }} {{$item->ukuran}}
+                            @endforeach    
+                        @endforeach
                     </td>
-                    <td>{{$data_index->total_batch}}</td>
-                    <td>jumlah waktu</td>
-                    <td>pfr</td>
+                    
+                    <td>{{$data["total_batch"]}}</td>
+                    <td>{{$data["minutes"]}}menit</td>
+                    <td>{{$data["pfr"]}}%</td>
                     <td>
-                        @foreach ($poproduksi->where('id',$data_index->id_product) as $poproduksinya)
+                        @foreach ($poproduksi->where('id',$no) as $poproduksinya)
                             {{number_format($poproduksinya->jumlah_po,0,'','.')}} 
                         @endforeach
                     </td>
                     <td>
-                        <a class="btn btn-warning" href="{{route('filling_detail',$data_index->id_product)}}">Show</a>  
+                        <a class="btn btn-warning" href="{{route('filling_detail',$no)}}">Show</a>  
                     </td>
                <tr>
                 @endforeach

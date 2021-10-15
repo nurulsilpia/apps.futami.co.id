@@ -9,7 +9,7 @@
         <thead class="bg-info text-white">
             <tr >
                 <th width="10px" >no</th>
-                <th>id produk</th>
+                <th>varian</th>
                 <th>no batch</th>
                 <th width="100px">start filling</th>
                 <th width="100px">stop filling</th>
@@ -25,11 +25,16 @@
                 @foreach ($data_index as $no => $data_index)
                 <tr>
                     <th scope="row">{{ $no + 1 }}</th>
-                    <td>{{$data_index->id_product}}</td>
+                    <td>@foreach ($poproduksi->where('id',$data_index->id_product) as $poproduksinya)
+                            @foreach ($varian->where('id',$poproduksinya->id_varian) as $item)
+                                {{$item->kode_variant }} {{$item->ukuran}}
+                            @endforeach    
+                        @endforeach
+                    </td>
                     <td>{{$data_index->no_batch}}</td>
                     <td>{{$data_index->start_filling}}</td>
                     <td>{{$data_index->stop_filling}}</td>
-                    <td>{{ $time = \Carbon\Carbon::parse($data_index->start_filling)->diffinMinutes($data_index->stop_filling)  }}
+                    <td>{{ $time = \Carbon\Carbon::parse($data_index->start_filling)->diffinMinutes($data_index->stop_filling) }} menit
 
                     </td>
                     <td>{{$data_index->counter_filling}}</td>

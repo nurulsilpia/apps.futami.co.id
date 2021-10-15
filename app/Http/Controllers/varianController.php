@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\DB;
 class varianController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource. 
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $data_varian = DB::table('tbl_varian')->where('tampilkan',1)->get();
+        $data_varian = DB::table('tbl_varian')->get();
         return view('varian.index',['data_varian'=>$data_varian]);
     }
 

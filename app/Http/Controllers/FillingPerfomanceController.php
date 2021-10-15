@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class FillingPerfomanceController extends Controller
 {
@@ -16,27 +17,39 @@ class FillingPerfomanceController extends Controller
      */
     public function index()
     {
-        //SELECT kode_produksi, min(mulai), max(stop), timestampdiff(minute,min(mulai), max(stop)) menit, count(kode_produksi) total_batch FROM `tbl_filling_performance` group by kode_produksi
-        $data_index = DB::select(
-          'SELECT 
-            id_product,
-            SUM(counter_filling) counter_filling, 
-            COUNT(counter_filling) total_batch,
-            TIMESTAMPDIFF(MINUTE,MIN(start_filling),max(stop_filling)) pfr
-           FROM 
-            tbl_filling_perfomance
-           GROUP BY
-            id_product'
-        );
-    
-
-        // dd($data_index);
-
+        // $data_index = DB::select(
+        //   'SELECT 
+        //     id_product,
+        //     SUM(counter_filling) counter_filling, 
+        //     COUNT(counter_filling) total_batch,
+        //     TIMESTAMPDIFF(MINUTE,MIN(start_filling),max(stop_filling)) pfr
+        //    FROM 
+        //     tbl_filling_perfomance
+        //    GROUP BY
+        //     id_product'
+        // );
+        $data_index = collect( DB::table('tbl_filling_perfomance')->get())
+        ->mapToGroups(function ($item, $key) {
+            return [$item->id_product => $item];
+        });
+        $data = [];
+        foreach($data_index as $key=>$varian){
+            $minutes=0;
+            foreach ($varian as $item) {
+                $minutes+=Carbon::parse($item->start_filling)->diffinMinutes($item->stop_filling);
+            }
+            $data[$key]["total_batch"]=$varian->count();
+            $data[$key]["minutes"]=$minutes;
+            $data[$key]["pfr"]=number_format((($varian->sum("counter_filling") / ($minutes/60))/22800)*100,2,',','');
+        };
+        // dd($data);
+        
+        
         $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
         $varian = DB::table('tbl_varian')->get();
 
         return view('FillingPerfomance.index',[
-            'data_index'=>$data_index,
+            'data_index'=>$data,
             'poproduksi'=>$poproduksi,
             "varian"=>$varian
             ]);
@@ -45,7 +58,13 @@ class FillingPerfomanceController extends Controller
     public function detail($id)
     {
         $data_index = DB::table('tbl_filling_perfomance')->where('id_product',$id)->get();
-        return view('FillingPerfomance.detail',['data_index'=>$data_index]);
+        $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
+        $varian = DB::table('tbl_varian')->get();
+
+        return view('FillingPerfomance.detail',[
+            'data_index'=>$data_index,
+            'poproduksi'=>$poproduksi,
+            "varian"=>$varian]);
     }
     
     public function create()
