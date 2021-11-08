@@ -21,7 +21,22 @@ class test extends Controller
     public function index()
     {
         $data_test = DB::table('tbl_test')->get();
-        return view ('test.home',['data_test'=> $data_test]);
+        // grafik
+        $filling_perfomance = DB::table('tbl_filling_perfomance')->get();
+        $quantity_release = DB::table('tbl_quantity_release_qc')->get();
+        $data_filling = [];
+        $data_qc = [];
+
+        foreach ($filling_perfomance as $filling) {
+            $data_filling[] = $filling->counter_filling;
+            $data_qc = $filling;
+        }
+
+        // dd(json_encode($categories));
+        return view ('test.home',[
+            'data_test'=> $data_test,
+            'data_filling'=>$data_filling
+        ]);
     }
 
     /**

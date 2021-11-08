@@ -10,10 +10,9 @@ Route::post('/login', 'otentikasi\OtentikasiController@login') -> name('login');
 Route::get('/logout', 'otentikasi\OtentikasiController@logout') -> name('logout');
 
 Route::group(['middleware' => 'auth'], function () {
-    // Route::get('/', function () {
-    //     return view('/home');
-    // })->name('home');
-    Route::resource('/','\App\Http\Controllers\HomeController');
+    Route::get('/', function () {
+        return view('/home');
+    })->name('home');
     
     //profile user
     Route::get('/profile', 'otentikasi\OtentikasiController@profile' )-> name('profile') ;

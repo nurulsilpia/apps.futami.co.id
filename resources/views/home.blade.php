@@ -35,61 +35,67 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script>
     Highcharts.chart('chart', {
-      chart: {
-          type: 'column'
-      },
-      title: {
-          text: 'Futami Graphic'
-      },
-      subtitle: {
-          text: 'October'
-      },
-      xAxis: {
-          categories: [
-              'Sun',
-              'Mon',
-              'Tue',
-              'Wed',
-              'Thu',
-              'Fri',
-              'Sat'
-          ],
-          crosshair: true
-      },
-      yAxis: {
-          min: 0,
-          title: {
-              text: 'Daily'
-          }
-      },
-      tooltip: {
-          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-              '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-          footerFormat: '</table>',
-          shared: true,
-          useHTML: true
-      },
-      plotOptions: {
-          column: {
-              pointPadding: 0.2,
-              borderWidth: 0
-          }
-      },
-      series: [{
-          name: 'Filling Performance',
-          data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6]
-
-      }, {
-          name: 'QC Release',
-          data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0]
-
-      }, {
-          name: 'Downtime',
-          data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0]
-
-      }]
-  });
+    chart: {
+        type: 'areaspline'
+    },
+    title: {
+        text: 'Futami Graphic'
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        verticalAlign: 'top',
+        x: 150,
+        y: 100,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF'
+    },
+    xAxis: {
+        categories: [
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday',
+            'Sunday'
+        ],
+        plotBands: [{ // visualize the weekend
+            from: 4.5,
+            to: 6.5,
+            color: 'rgba(68, 170, 213, .2)'
+        }]
+    },
+    yAxis: {
+        title: {
+            text: 'Units'
+        }
+    },
+    tooltip: {
+        shared: true,
+        valueSuffix: ' units'
+    },
+    credits: {
+        enabled: false
+    },
+    plotOptions: {
+        areaspline: {
+            fillOpacity: 0.5
+        }
+    },
+    series: [{
+        name: 'Filling Performance',
+        data: [1, 5, 7, 2, 4, 10, 12]
+    }, {
+        name: 'Quantity Release',
+        data: [3, 4, 3, 4, 6, 11, 9]
+    }, {
+        name: 'Downtime',
+        data: [4, 3, 2, 6, 8, 5, 8]
+    }]
+});
 </script>
 @endsection
 
