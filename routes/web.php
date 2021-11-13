@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 Route::resource('test','\App\Http\Controllers\test');
 
 // login
@@ -10,9 +10,13 @@ Route::post('/login', 'otentikasi\OtentikasiController@login') -> name('login');
 Route::get('/logout', 'otentikasi\OtentikasiController@logout') -> name('logout');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', function () {
-        return view('/home');
-    })->name('home');
+    // Route::get('/', function () {
+    //     return view('/home');
+    // })->name('home');
+    Route::get(
+        '/',
+        [HomeController::class, 'index']
+    )->name('home');
     
     //profile user
     Route::get('/profile', 'otentikasi\OtentikasiController@profile' )-> name('profile') ;
