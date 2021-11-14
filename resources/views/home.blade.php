@@ -87,13 +87,13 @@
     },
     series: [{
         name: 'Filling Performance',
-        data: [1, 5, 7, 2, 4, 10, 12]
+        data: {!! json_encode($data_filling) !!}
     }, {
         name: 'Quantity Release',
-        data: [3, 4, 3, 4, 6, 11, 9]
+        data: [113, 444, 333, 445, 678, 119, 987]
     }, {
         name: 'Downtime',
-        data: [4, 3, 2, 6, 8, 5, 8]
+        data: [456, 332, 234, 678, 898, 567, 876]
     }]
 });
 </script>

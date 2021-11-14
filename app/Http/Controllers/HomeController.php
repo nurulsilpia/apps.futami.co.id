@@ -11,6 +11,19 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view ('home');
+        // grafik
+        $filling_perfomance = DB::table('tbl_filling_perfomance')->get();
+        $quantity_release = DB::table('tbl_quantity_release_qc')->get();
+        $data_filling = [];
+        $data_qc = [];
+
+        foreach ($filling_perfomance as $filling) {
+            $data_filling[] = $filling->counter_filling;
+            $data_qc = $filling;
+        }
+
+        return view ('home',[
+            'data_filling'=>$data_filling
+        ]);
     }
 }
