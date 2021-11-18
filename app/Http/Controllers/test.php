@@ -24,18 +24,37 @@ class test extends Controller
         // grafik
         $filling_perfomance = DB::table('tbl_filling_perfomance')->get();
         $quantity_release = DB::table('tbl_quantity_release_qc')->get();
+        $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
+        $varian = DB::table('tbl_varian')->get();
         $data_filling = [];
-        $data_qc = [];
+        $data_qc = []; 
+        $data_quantity = []; 
 
         foreach ($filling_perfomance as $filling) {
             $data_filling[] = $filling->counter_filling;
             $data_qc = $filling;
         }
-
+        // foreach ($quantity_release as $quantity) {
+        //     $data_quantity[] = $quantity->id_product;
+        // }
+        // foreach ($varian as $varian) {
+        //     $data_varian[] = $varian->id_product;
+        // }
+       
+        foreach ($quantity_release as $release) {
+            foreach ($poproduksi->where('id',$release->id_product) as $poproduksinya) {
+                foreach ($varian->where('id',$poproduksinya->id_varian) as $item) {
+                    $data_quantity[] = $item->kode_variant;
+                }
+            }
+        }
+        dd($data_quantity);
         // dd(json_encode($categories));
         return view ('test.home',[
             'data_test'=> $data_test,
-            'data_filling'=>$data_filling
+            'data_filling'=>$data_filling,
+            'data_quantity'=>$data_quantity,
+            'poproduksi'=>$poproduksi
         ]);
     }
 

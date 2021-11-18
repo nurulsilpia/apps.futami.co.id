@@ -46,7 +46,7 @@ class FillingPerfomanceController extends Controller
         
         
         $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
-        $varian = DB::table('tbl_varian')->get();
+        $varian = DB::table('tbl_varian')->get(); 
 
         return view('FillingPerfomance.index',[
             'data_index'=>$data,

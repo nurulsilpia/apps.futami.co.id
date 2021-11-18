@@ -15,6 +15,8 @@ class QuantityReleaseQcController extends Controller
     public function index()
     {
         $data_table = DB::table('tbl_quantity_release_qc')->get();
+        $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
+        $varian = DB::table('tbl_varian')->get(); 
         $finish_good = collect( DB::table('tbl_filling_perfomance')->get())
         ->mapToGroups(function ($item, $key) {
             return [$item->id_product => $item->counter_filling];
@@ -23,7 +25,9 @@ class QuantityReleaseQcController extends Controller
         // dd($finish_good);
         return view('QuantityRelease.index',[
             'data_table'=> $data_table,
-            'finish_good'=>$finish_good
+            'finish_good'=>$finish_good,
+            'varian'=>$varian,
+            'poproduksi'=>$poproduksi
             ]);
 
     }

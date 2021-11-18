@@ -88,14 +88,40 @@
     series: [{
         name: 'Filling Performance',
         data: {!! json_encode($data_filling) !!}
-    }, {
-        name: 'Quantity Release',
-        data: [113, 444, 333, 445, 678, 119, 987]
-    }, {
-        name: 'Downtime',
-        data: [456, 332, 234, 678, 898, 567, 876]
     }]
 });
+// Highcharts.chart('chart', {
+//     chart: {
+//         type: 'line'
+//     },
+//     title: {
+//         text: 'Monthly Average Temperature'
+//     },
+//     subtitle: {
+//         text: 'Source: WorldClimate.com'
+//     },
+//     xAxis: {
+//         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+//     },
+//     yAxis: {
+//         title: {
+//             text: 'Temperature (°C)'
+//         }
+//     },
+//     plotOptions: { 
+//         line: {
+//             dataLabels: {
+//                 enabled: true
+//             },
+//             enableMouseTracking: false
+//         }
+//     },
+//     series: [{
+//         name: 'Filling Performance',
+//         data: {!! json_encode($data_filling) !!}
+
+//     } ]
+// });
 </script>
 @endsection
 

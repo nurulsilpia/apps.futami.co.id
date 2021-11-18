@@ -21,7 +21,7 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>ID Product</th>
+                    <th>Varian</th>
                     <th>Reject + Defect Inspeksi</th>
                     <th>Reject + Defect Inspeksi HCI</th>
                     <th>QC Finish Good</th>
@@ -33,7 +33,13 @@
                 @foreach($data_table as $no => $data_table)
                         <tr>
                             <th scope="row">{{ $no + 1 }}</th>
-                            <td>{{$data_table->id_product}}</td>
+                            <td>
+                                @foreach ($poproduksi->where('id',$data_table->id_product) as $poproduksinya)
+                                    @foreach ($varian->where('id',$poproduksinya->id_varian) as $item)
+                                        <a href="{{route('poproduksi.show',$data_table->id_product)}}"> {{$item->kode_variant }} {{$item->ukuran}}</a>
+                                    @endforeach    
+                                @endforeach
+                            </td> 
                             <td>{{$data_table->reject_defect_inspeksi}}</td>
                             <td>{{$data_table->reject_defect_inspeksi_hci}}</td>
                             <td>
