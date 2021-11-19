@@ -46,8 +46,10 @@ class quantityProductionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('QuantityProduction.create');
+    {   $varian = DB::table('tbl_varian')->get();
+        return view('QuantityProduction.create',[
+                "varian"=>$varian
+            ]);
     }
 
     /**
