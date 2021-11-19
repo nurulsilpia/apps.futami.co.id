@@ -12,7 +12,7 @@
                         <table class="table table-bordered table-sm table-hover  text-center">
                             <tr class="bg-info text-white">
                                 <th width="10px">NO.</th>
-                                <th>Produksi</th>
+                                <th>Varian</th>
                                 <th>Jenis Downtime</th>
                                 <th>Unit Downtime</th>
                                 <th>Root Cause</th>
@@ -28,7 +28,7 @@
                                     <td>
                                         @foreach ($poproduksi->where('id',$item->id_produksi) as $poproduksinya)
                                             @foreach ($data_varian->where('id',$poproduksinya->id_varian) as $data_variannya)
-                                                <a href="{{route('poproduksi.edit',$item->id_produksi)}}">{{$data_variannya->kode_variant}} {{$data_variannya->ukuran}}</a>
+                                                <a href="{{route('poproduksi.show',$item->id_produksi)}}">{{$data_variannya->kode_variant}} {{$data_variannya->ukuran}}</a>
                                             @endforeach
                                         @endforeach
                                     </td>

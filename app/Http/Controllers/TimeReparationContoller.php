@@ -14,8 +14,15 @@ class TimeReparationContoller extends Controller
      */
     public function index()
     {
+        $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
+        $data_varian = DB::table('tbl_varian')->get();
         $data_table = DB::table('tbl_time_reparation')->get();
-        return view ('TimeReparation.index', ['data_table'=> $data_table]);
+        return view ('TimeReparation.index',[
+            'data_table'=> $data_table,
+            'poproduksi'=>$poproduksi,
+            'data_varian'=>$data_varian,
+            ]);
+
     }
 
     /**
