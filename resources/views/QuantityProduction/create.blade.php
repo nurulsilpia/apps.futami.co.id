@@ -9,9 +9,9 @@
                 @csrf
                 <div class="mb-3">
                     <div class="form-group">
-                        <label>* Varian</label><br>
+                        <label>Varian</label><br>
                             <select class="form-control" name="id_product" id="id_product" required>
-                                <option value="">--Pilih Varian--</option> 
+                                <option value="" disabled selected>--Pilih Varian--</option> 
                                     @foreach ($varian as $item)
                                         <option value="{{$item->id}}">{{$item->kode_variant}} {{$item->ukuran}}ML</option> 
                                     @endforeach

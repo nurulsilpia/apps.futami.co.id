@@ -39,7 +39,10 @@ class QuantityReleaseQcController extends Controller
      */
     public function create()
     {
-        return view('QuantityRelease.Create');
+        $varian = DB::table('tbl_varian')->get(); 
+        return view('QuantityRelease.Create', [
+            'varian'=>$varian
+        ]);
     }
 
     /**

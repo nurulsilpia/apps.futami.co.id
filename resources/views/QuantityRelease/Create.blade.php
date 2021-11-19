@@ -8,11 +8,15 @@
             <form action="{{ route('QuantityRelease.store') }}" method="POST" class="mx-3">
                 @csrf
                 <div class="mb-3">
-                    <label class="form-label fw-bold">ID Product</label>
-                    <input type="number" name="id_product" class="form-control @error('id_product') is invalid @enderror" placeholder="Masukan ID Product" value="{{old('id_product')}}">
-                    @error('id_product')
-                        <div class="alert alert-danger">{{$message="ID Product harus di isi"}}</div>
-                    @enderror
+                    <div class="form-group">
+                        <label>Varian</label><br>
+                            <select class="form-control" name="id_product" id="id_product" required>
+                                <option value="" disabled selected>--Pilih Varian--</option> 
+                                    @foreach ($varian as $item)
+                                        <option value="{{$item->id}}">{{$item->kode_variant}} {{$item->ukuran}}ML</option> 
+                                    @endforeach
+                            </select>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label fw-bold">Reject + Defect Inspeksi</label>

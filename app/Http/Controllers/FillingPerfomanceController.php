@@ -17,17 +17,6 @@ class FillingPerfomanceController extends Controller
      */
     public function index()
     {
-        // $data_index = DB::select(
-        //   'SELECT 
-        //     id_product,
-        //     SUM(counter_filling) counter_filling, 
-        //     COUNT(counter_filling) total_batch,
-        //     TIMESTAMPDIFF(MINUTE,MIN(start_filling),max(stop_filling)) pfr
-        //    FROM 
-        //     tbl_filling_perfomance
-        //    GROUP BY
-        //     id_product'
-        // );
         $data_index = collect( DB::table('tbl_filling_perfomance')->get())
         ->mapToGroups(function ($item, $key) {
             return [$item->id_product => $item];
@@ -44,14 +33,14 @@ class FillingPerfomanceController extends Controller
         };
         // dd($data);
         
-        
+    
         $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
         $varian = DB::table('tbl_varian')->get(); 
 
         return view('FillingPerfomance.index',[
             'data_index'=>$data,
             'poproduksi'=>$poproduksi,
-            "varian"=>$varian
+            'varian'=>$varian
             ]);
     }
 
@@ -69,7 +58,10 @@ class FillingPerfomanceController extends Controller
     
     public function create()
     {
-        return view('FillingPerfomance.create-data');
+        $varian = DB::table('tbl_varian')->get();
+        return view('FillingPerfomance.create-data', [
+            'varian'=>$varian
+        ]);
     }
 
     /**
