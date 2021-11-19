@@ -88,6 +88,9 @@
     series: [{
         name: 'Filling Performance',
         data: {!! json_encode($data_filling) !!}
+    }, {
+        name: 'QC Release',
+        data: {!! json_encode($data_qc) !!}
     }]
 });
 // Highcharts.chart('chart', {
