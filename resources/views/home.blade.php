@@ -41,6 +41,9 @@
     title: {
         text: 'Futami Graphic'
     },
+    subtitle: {
+        text: 'Filling Performance (Counter Filling), Quantity Production (Total), QC Release (Finish Good)'
+    },
     legend: {
         layout: 'vertical',
         align: 'left',

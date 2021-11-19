@@ -24,6 +24,9 @@ class HomeController extends Controller
         $data_production = [];
         
         // ---------------------
+        foreach ($filling_perfomance as $filling) {
+            $data_filling[] = $filling->counter_filling;
+        }
         
         foreach ($quantity_production as $production) {
             if (isset($finish_good[$production->id_product])) {
@@ -40,15 +43,17 @@ class HomeController extends Controller
             $data_production[] = $production->reject_defect + $production->sample + $production->reject_defect_hci + $finish_good_quantity;
         }
         // dd($data_production);
-        // --------------------
-
-        foreach ($filling_perfomance as $filling) {
-            $data_filling[] = $filling->counter_filling;
-        }
 
         foreach ($quantity_release as $release) {
-                $data_qc[] = $release->reject_defect_inspeksi + $release->reject_defect_inspeksi_hci;
+            if (isset($finish_good[$release->id_product])) {
+                $finish_good_quantity = $finish_good[$release->id_product]->sum();
+            } else {
+                $finish_good_quantity = 0;
             }
+
+            $data_qc[] = $finish_good_quantity - $release->reject_defect_inspeksi - $release->reject_defect_inspeksi_hci;
+        }
+        // dd($data_qc);
 
         return view ('home',[
             'data_filling'=>$data_filling,
