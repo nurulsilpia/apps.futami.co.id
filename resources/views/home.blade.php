@@ -89,6 +89,9 @@
         name: 'Filling Performance',
         data: {!! json_encode($data_filling) !!}
     }, {
+        name: 'Quantity Production',
+        data: {!! json_encode($data_production) !!}
+    }, {
         name: 'QC Release',
         data: {!! json_encode($data_qc) !!}
     }]

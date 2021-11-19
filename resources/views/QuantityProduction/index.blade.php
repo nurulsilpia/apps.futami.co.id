@@ -50,7 +50,6 @@
                                 @else
                                     0
                                 @endif
-                                
                             </td>
                             <td>
                                 <?php
@@ -59,8 +58,6 @@
                                 } else {
                                     $finish_good_quantity = 0;
                                 }
-                                
-                                    
                                     $total = $data_quantityProduction->reject_defect + $data_quantityProduction->sample + $data_quantityProduction->reject_defect_hci + $finish_good_quantity;
                                     echo "$total";
                                 ?>
