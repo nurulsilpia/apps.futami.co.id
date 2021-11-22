@@ -91,9 +91,11 @@ class TimeReparationContoller extends Controller
      */
     public function edit($id)
     {
+        $varian = DB::table('tbl_varian')->get();
         $edit = DB::table('tbl_time_reparation')->where('id_time_reparation',$id)->get();
         // dd($edit);
-        return view('TimeReparation.edit',['edit'=> $edit]);
+        return view('TimeReparation.edit',['edit'=> $edit,
+        'varian'=> $varian,]);
     }
 
     /**

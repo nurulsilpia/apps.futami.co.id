@@ -103,8 +103,12 @@ class quantityProductionController extends Controller
      */
     public function edit($id)
     {
+        $varian = DB::table('tbl_varian')->get();
         $edit = DB::table('tbl_quantity_production')->where('id_quantity_production',$id)->get();
-        return view('QuantityProduction.edit',['edit'=> $edit]);
+        return view('QuantityProduction.edit',[
+            'edit'=> $edit,
+            'varian'=> $varian,
+        ]);
     }
 
     /**

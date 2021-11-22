@@ -12,9 +12,19 @@
                 </div>
                 <div class="card-body">
                         @csrf
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">ID Product</label>
-                        <input type="number" name="id_product" class="form-control" value="{{$data_index->id_product}}" required>
+                        <div class="mb-3">
+                        <div class="form-group">
+                            <label class="text-uppercase">Jenis Downtime</label>
+                            <select class="form-control" name="id_product" required>
+                                @foreach ($varian->where('id', $data_index->id_product) as $variannya)
+                                    <option value="{{ $variannya->id }}">{{ $variannya->kode_variant }} {{ $variannya->ukuran }}ML</option> 
+                                @endforeach
+                                <option disabled>--Silahkan ganti jenis downtime--</option> 
+                                @foreach ($varian as $variannya)
+                                    <option value="{{ $variannya->id }}">{{ $variannya->kode_variant }} {{ $variannya->ukuran }}ML</option> 
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-bold">No Batch</label>

@@ -93,9 +93,11 @@ class QuantityReleaseQcController extends Controller
      */
     public function edit($id)
     {
+        $varian = DB::table('tbl_varian')->get();
         $edit = DB::table('tbl_quantity_release_qc')->where('id_quantity_release_qc',$id)->get();
         // dd($edit);
-        return view('QuantityRelease.edit',['edit'=> $edit]);
+        return view('QuantityRelease.edit',[ 'edit'=> $edit,
+        'varian'=> $varian,]);
     }
 
     /**

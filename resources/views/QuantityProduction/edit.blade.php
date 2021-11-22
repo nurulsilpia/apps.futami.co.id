@@ -12,13 +12,20 @@
                 </div>
                 <div class="card-body">
                         @csrf
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">ID Product</label>
-                            <input type="number" name="id_product" class="form-control" placeholder="Masukan ID Product" value="{{ $data_test->id_product }}" value="{{ old('id_product') }}">
-                            @error('id_product')
-                                <div class="alert alert-danger">{{$message="ID Product harus di isi"}}</div>
-                            @enderror
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label class="text-uppercase">Jenis Downtime</label>
+                            <select class="form-control" name="id_product" required>
+                                @foreach ($varian->where('id', $data_test->id_product) as $variannya)
+                                    <option value="{{ $variannya->id }}">{{ $variannya->kode_variant }} {{ $variannya->ukuran }}ML</option> 
+                                @endforeach
+                                <option disabled>--Silahkan ganti jenis downtime--</option> 
+                                @foreach ($varian as $variannya)
+                                    <option value="{{ $variannya->id }}">{{ $variannya->kode_variant }} {{ $variannya->ukuran }}ML</option> 
+                                @endforeach
+                            </select>
                         </div>
+                    </div>
                         <div class="mb-3">
                             <label class="form-label fw-bold">Reject + Defect</label>
                             <input type="number" name="reject_defect" class="form-control" placeholder="Masukan Jumlah Data" value="{{ $data_test->reject_defect }}" value="{{ old('reject_defect') }}">

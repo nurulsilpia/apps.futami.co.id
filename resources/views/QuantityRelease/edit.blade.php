@@ -3,7 +3,7 @@
 
 @section('content')
 
-    @foreach ($edit as $no => $data_table)
+    @foreach ($edit as $data_table)
         <form action="{{route('QuantityRelease.update',$data_table->id_quantity_release_qc)}}" method="POST">
             @method('PUT')
             <div class="card shadow-sm">
@@ -13,11 +13,18 @@
             <div class="card-body">
                 @csrf
                 <div class="mb-3">
-                    <label class="form-label fw-bold">ID Product</label>
-                    <input type="number" name="id_product" class="form-control @error('id_product') is invalid @enderror" placeholder="Masukan ID Product" value="{{ $data_table->id_product }}" value="{{old('id_product')}}">
-                    @error('id_product')
-                        <div class="alert alert-danger">{{$message="ID Product harus di isi"}}</div>
-                    @enderror
+                        <div class="form-group">
+                            <label class="text-uppercase">Jenis Downtime</label>
+                            <select class="form-control" name="id_product" required>
+                                @foreach ($varian->where('id', $data_table->id_product) as $variannya)
+                                    <option value="{{ $variannya->id }}">{{ $variannya->kode_variant }} {{ $variannya->ukuran }}ML</option> 
+                                @endforeach
+                                <option disabled>--Silahkan ganti jenis downtime--</option> 
+                                @foreach ($varian as $variannya)
+                                    <option value="{{ $variannya->id }}">{{ $variannya->kode_variant }} {{ $variannya->ukuran }}ML</option> 
+                                @endforeach
+                            </select>
+                        </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label fw-bold">Reject + Defect Inspeksi</label>
