@@ -27,9 +27,10 @@
                                     <td>{{ $item->ukuran}} ML</td>
                                     <td>
                                         <form action="{{ route('varian.destroy',$item->id) }}" method="POST">
-                                    @method('DELETE')
-                                    <button class="btn btn-danger" type="submit" onclick="return confirm('Hapus Data?')">Delete</button>
-                                </form>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger" type="submit" onclick="return confirm('Hapus Data?')">Delete</button>
+                                        </form>
                                     </td>
                                     
                                 </tr>
