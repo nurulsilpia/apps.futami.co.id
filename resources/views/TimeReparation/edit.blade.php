@@ -14,7 +14,7 @@
             @csrf
                 <div class="mb-3 col-md-3">
                     <div class="form-group">
-                        <label class="text-uppercase">Jenis Downtime</label>
+                        <label class="text-uppercase">Varian</label>
                         <select class="form-control" name="id_product" required>
                             @foreach ($varian->where('id', $data_table->id_product) as $variannya)
                                 <option value="{{ $variannya->id }}">{{ $variannya->kode_variant }} {{ $variannya->ukuran }}ML</option> 

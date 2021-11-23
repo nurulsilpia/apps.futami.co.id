@@ -27,7 +27,7 @@
                     <th scope="row">{{ $no + 1 }}</th>
                     <td>@foreach ($poproduksi->where('id',$data_index->id_product) as $poproduksinya)
                             @foreach ($varian->where('id',$poproduksinya->id_varian) as $item)
-                                {{$item->kode_variant }} {{$item->ukuran}}
+                            <a href="{{route('poproduksi.show',$data_index->id_product)}}"> {{$item->kode_variant }} {{$item->ukuran}}
                             @endforeach    
                         @endforeach
                     </td>

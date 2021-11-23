@@ -49,7 +49,7 @@
                                         <a class="btn btn-primary" href="{{ route('downtime.edit',$item->id) }}">Edit</a>
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus Data?')">Delete</button>
                                     </td>
                                 </tr>
                                 @endforeach

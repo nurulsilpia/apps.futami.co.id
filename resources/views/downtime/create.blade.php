@@ -13,11 +13,13 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label class="text-uppercase">id produksi</label><br>
-                                        <input type="number" placeholder="Masukan id produksi" name="id_produksi" class="form-control @error('id_produksi') is invalid @enderror" value="{{old('id_produksi')}}">
-                                        @error('id_produksi')
-                                            <div class="alert alert-danger">{{$message="ID Product harus di isi"}}</div>
-                                        @enderror
+                                        <label>Varian</label><br>
+                                            <select class="form-control" name="id_produksi" id="id_produksi" required>
+                                                <option value="" disabled selected>--Pilih Varian--</option> 
+                                                    @foreach ($varian as $item)
+                                                        <option value="{{$item->id}}">{{$item->kode_variant}} {{$item->ukuran}}ML</option> 
+                                                    @endforeach
+                                            </select>
                                     </div>
                                 </div>
                                 <div class="col-md-3">

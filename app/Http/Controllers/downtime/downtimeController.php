@@ -37,11 +37,13 @@ class downtimeController extends Controller
      */
     public function create()
     {
+        $varian = DB::table('tbl_varian')->get();
         $data_jenis_downtime = DB::table('tbl_jenis_downtime')->get();
         $data_unit_downtime = DB::table('tbl_unit_downtime')->get();
         return view('downtime.create', [
             'jenis_downtime'=>$data_jenis_downtime,
-            'unit_downtime'=>$data_unit_downtime
+            'unit_downtime'=>$data_unit_downtime,
+            'varian'=>$varian
         ]);
     }
 
@@ -92,6 +94,7 @@ class downtimeController extends Controller
      */
     public function edit($id)
     {
+        $varian = DB::table('tbl_varian')->get();
         $data_jenis_downtime = DB::table('tbl_jenis_downtime')->get();
         $data_unit_downtime = DB::table('tbl_unit_downtime')->get();
         $edit = DB::table('tbl_downtime')->where('id',$id)->get();
@@ -99,7 +102,8 @@ class downtimeController extends Controller
         return view('downtime.edit',[
             'edit'=> $edit,
             'id_jenis_downtime'=>$data_jenis_downtime,
-            'id_unit_downtime'=>$data_unit_downtime
+            'id_unit_downtime'=>$data_unit_downtime,
+            'varian'=>$varian
         ]);
     }
 

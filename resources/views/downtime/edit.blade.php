@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Tambah Downtime')
+@section('title', 'Edit Downtime')
 
 @section('content')
 
@@ -12,8 +12,18 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="text-uppercase">id produksi</label><br>
-                            <input type="number" placeholder="Masukan id produksi" name="id_produksi" class="form-control  text-uppercase" value="{{ $item->id_produksi }}">
+                            {{-- <label class="text-uppercase">id produksi</label><br>
+                            <input type="number" placeholder="Masukan id produksi" name="id_produksi" class="form-control  text-uppercase" value="{{ $item->id_produksi }}"> --}}
+                            <label class="text-uppercase">Varian</label>
+                            <select class="form-control" name="id_produksi" required>
+                                @foreach ($varian->where('id', $item->id_produksi) as $variannya)
+                                    <option value="{{ $variannya->id }}">{{ $variannya->kode_variant }} {{ $variannya->ukuran }}ML</option> 
+                                @endforeach
+                                <option disabled>--Silahkan ganti jenis downtime--</option> 
+                                @foreach ($varian as $variannya)
+                                    <option value="{{ $variannya->id }}">{{ $variannya->kode_variant }} {{ $variannya->ukuran }}ML</option> 
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-12">

@@ -143,7 +143,7 @@ class FillingPerfomanceController extends Controller
                 'stop_filling' => $request->stop_filling,
                 'counter_filling'=> $request->counter_filling
             ]);
-        return redirect()->route('FillingPerfomance.detail')
+        return redirect()->route('FillingPerfomance.index')
                          ->with('success','Edited successfully');
     }
 
@@ -156,7 +156,7 @@ class FillingPerfomanceController extends Controller
     public function destroy($id)
     {
         DB::table('tbl_filling_perfomance')->where('id_filling_perfomance',$id)->delete();
-        return redirect()->route('FillingPerfomance.detail')
+        return redirect()->route('FillingPerfomance.index')
                         ->with('success','Deleted successfully');
     }
 }
