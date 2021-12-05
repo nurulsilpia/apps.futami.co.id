@@ -79,8 +79,10 @@ class TimeReparationContoller extends Controller
     public function show($id)
     {
         $tampil = DB::table('tbl_time_reparation')->where('id_time_reparation',$id)->get();
+        $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
+        $data_varian = DB::table('tbl_varian')->get();
         // dd($tampil);
-        return view('TimeReparation.tampil',['tampil'=> $tampil]);
+        return view('TimeReparation.tampil',['tampil'=> $tampil,'poproduksi'=>$poproduksi,'data_varian'=>$data_varian]);
     }
 
     /**
