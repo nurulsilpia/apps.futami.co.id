@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIotsTable extends Migration
+class CreateTblStartUpUtilityTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateIotsTable extends Migration
      */
     public function up()
     {
-        Schema::create('iots', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('sensor');
-            $table->string('channel');
-            $table->integer('value');
-            $table->timestamps();
+        Schema::create('tbl_start_up_utility', function (Blueprint $table) {
+            $table->integer('id');
+            $table->integer('id_produksi');
+            $table->dateTime('mulai');
+            $table->dateTime('selesai');
         });
     }
 
@@ -29,6 +28,6 @@ class CreateIotsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('iots');
+        Schema::dropIfExists('tbl_start_up_utility');
     }
 }

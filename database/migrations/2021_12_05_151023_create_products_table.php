@@ -13,21 +13,11 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        // Schema::create('products', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->timestamps();
-        // });
-
         Schema::create('products', function (Blueprint $table) {
-
-            $table->increments('id');
-
+            $table->unsignedInteger('id')->primary();
             $table->string('name');
-
             $table->text('detail');
-
             $table->timestamps();
-
         });
     }
 
