@@ -80,9 +80,16 @@ class QuantityReleaseQcController extends Controller
      */
     public function show($id)
     {
+        $poproduksi=DB::table('tbl_po_produksi')->orderBy('tanggal_dibuat','Desc')->get();
         $tampil = DB::table('tbl_quantity_release_qc')->where('id_quantity_release_qc',$id)->get();
+        $varian = DB::table('tbl_varian')->get();
+        $finish_good = collect( DB::table('tbl_filling_perfomance')->get())
+        ->mapToGroups(function ($item, $key) {
+            return [$item->id_product => $item->counter_filling];
+        });
+
         // dd($tampil);
-        return view('QuantityRelease.tampil',['tampil'=> $tampil]);
+        return view('QuantityRelease.tampil',['tampil'=> $tampil,'poproduksi'=>$poproduksi,'varian'=>$varian,'finish_good'=>$finish_good]);
     }
 
     /**
